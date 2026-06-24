@@ -1,0 +1,93 @@
+{
+  "_note": "Editorial calendar. publish_due.py reads this at build time: an article goes live (indexed, listed, in sitemap) only when its date <= today (Asia/Singapore). One article every 2 days. Edit dates here to reschedule.",
+  "articles": [
+    {
+      "slug": "taobao-furniture-assembly-singapore",
+      "title": "Taobao furniture assembly in Singapore: cost, safety & what to expect",
+      "desc": "Typical costs, DIY vs hiring, wall-anchoring safety and common flat-pack problems.",
+      "category": "Handyman",
+      "date": "2026-06-24",
+      "hero": "taobao-assembly.jpg"
+    },
+    {
+      "slug": "move-out-cleaning-checklist-hdb",
+      "title": "Move-out cleaning checklist for HDB & condo handover",
+      "desc": "One team for cleaning plus make-good, painting and repairs — pass handover and protect your deposit.",
+      "category": "Cleaning",
+      "date": "2026-06-27",
+      "hero": "hdb-living.jpg"
+    },
+    {
+      "slug": "hdb-renovation-cost-singapore",
+      "title": "HDB renovation cost in Singapore: a realistic 2026 breakdown",
+      "desc": "What flooring, painting and waterproofing actually cost — and where homeowners overspend.",
+      "category": "Renovation",
+      "date": "2026-06-29",
+      "hero": "hdb-study.jpg"
+    },
+    {
+      "slug": "vinyl-vs-laminate-flooring-hdb",
+      "title": "Vinyl vs laminate flooring for HDB flats: which to choose",
+      "desc": "Water resistance, durability, cost and install — the quick verdict for Singapore homes.",
+      "category": "Flooring",
+      "date": "2026-07-01",
+      "hero": "vinyl-flooring.jpg"
+    },
+    {
+      "slug": "hdb-bathroom-waterproofing",
+      "title": "HDB bathroom waterproofing: signs, cost & when to redo",
+      "desc": "Spotting a failing membrane, inter-floor leaks, and what a proper re-do involves.",
+      "category": "Waterproofing",
+      "date": "2026-07-03",
+      "hero": "marble-bathroom.jpg"
+    },
+    {
+      "slug": "leaking-tap-fixes-hdb",
+      "title": "Leaking tap or pipe in your HDB? Fixes & when to call a plumber",
+      "desc": "Common causes, simple DIY fixes, and when a leak needs a licensed plumber.",
+      "category": "Plumbing",
+      "date": "2026-07-05",
+      "hero": "marble-bathroom.jpg"
+    },
+    {
+      "slug": "false-ceiling-cove-lighting-hdb",
+      "title": "False ceilings & cove lighting in HDB flats: costs and options",
+      "desc": "Hiding trunking, height loss, downlights vs cove — and what each option costs.",
+      "category": "Ceiling",
+      "date": "2026-07-07",
+      "hero": "hdb-living.jpg"
+    },
+    {
+      "slug": "painting-hdb-flat-cost",
+      "title": "Painting an HDB flat: cost, prep and how many coats",
+      "desc": "Costs by flat size, primer vs 2 coats, and the prep that makes paint last.",
+      "category": "Painting",
+      "date": "2026-07-09",
+      "hero": "bedroom-reno.jpg"
+    },
+    {
+      "slug": "mount-tv-hdb-wall",
+      "title": "Mounting a TV on an HDB wall: which wall, brackets & safety",
+      "desc": "Brick vs hollow walls, the right anchors, cable hiding and avoiding a fallen TV.",
+      "category": "Handyman",
+      "date": "2026-07-11",
+      "hero": "carpentry-doors.jpg"
+    },
+    {
+      "slug": "hdb-hacking-demolition-rules",
+      "title": "HDB hacking & demolition: what's allowed, permits & cost",
+      "desc": "What you can and can't hack, the permit, debris disposal and realistic costs.",
+      "category": "Demolition",
+      "date": "2026-07-13",
+      "hero": "herringbone-flooring.jpg"
+    },
+    {
+      "slug": "choose-renovation-contractor-singapore",
+      "title": "How to choose a renovation contractor in Singapore: 10 questions",
+      "desc": "Red flags, the right questions, and how to avoid a renovation gone wrong.",
+      "category": "Renovation",
+      "date": "2026-07-15",
+      "hero": "hdb-study.jpg"
+    }
+  ]
+}

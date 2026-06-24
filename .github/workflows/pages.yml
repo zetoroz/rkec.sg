@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Daily 01:30 UTC (~09:30 SGT). publish_due.py releases any article
+    # whose scheduled date has arrived (editorial calendar in articles.json).
+    - cron: '30 1 * * *'
 
 permissions:
   contents: read
@@ -22,6 +26,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Release scheduled articles (drip)
+        run: python3 scripts/publish_due.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
