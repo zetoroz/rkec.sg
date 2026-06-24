@@ -1,0 +1,21 @@
+# RK E&C Pte Ltd — https://rkec.sg
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers welcome (GEO)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://rkec.sg/sitemap.xml

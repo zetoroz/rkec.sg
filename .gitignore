@@ -1,0 +1,8 @@
+.DS_Store
+*_thumb.jpeg
+Thumbs.db
+
+# Only publish curated project images — never raw source dumps
+# (Google Drive keeps relocating "Examples image" into assets/)
+/assets/*
+!/assets/projects/
