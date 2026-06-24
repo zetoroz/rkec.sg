@@ -486,7 +486,7 @@
 
               <div id="form-success" class="hidden mt-2 flex items-start gap-3 rounded-xl border border-clay/30 bg-clay/10 p-4">
                 <svg class="mt-0.5 h-5 w-5 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <p class="text-sm text-ink"><span class="font-semibold">Thanks!</span> We've got your request — RK E&amp;C will be in touch shortly to arrange your site visit.</p>
+                <p class="text-sm text-ink"><span class="font-semibold">Almost done!</span> WhatsApp should open with your details — just hit send. If it didn't, message or call us at <a href="https://wa.me/6586500941" target="_blank" rel="noopener" class="font-semibold text-clay-deep underline">+65 8650 0941</a>.</p>
               </div>
             </form>
           </div>
@@ -545,8 +545,18 @@
         return;
       }
       const btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true; btn.firstChild.textContent = 'Sending… ';
-      setTimeout(() => { okEl.classList.remove('hidden'); btn.style.display = 'none'; }, 600);
+      btn.disabled = true; btn.firstChild.textContent = 'Opening WhatsApp… ';
+      // Hand the lead straight to WhatsApp with details pre-filled
+      const text = 'Hi RK E&C, I would like a quote.\n\n'
+        + 'Name: ' + name + '\n'
+        + 'Phone: ' + phone + '\n'
+        + 'Details: ' + msg;
+      const waUrl = 'https://wa.me/6586500941?text=' + encodeURIComponent(text);
+      setTimeout(() => {
+        window.open(waUrl, '_blank', 'noopener');
+        okEl.classList.remove('hidden');
+        btn.style.display = 'none';
+      }, 400);
     });
   </script>
 </body>
