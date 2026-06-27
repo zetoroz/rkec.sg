@@ -121,6 +121,20 @@ def main():
     sm.append("</urlset>")
     write("sitemap.xml", "\n".join(sm) + "\n")
 
+    # 5. llms.txt — keep the Guides section in sync with published articles (GEO)
+    try:
+        l = read("llms.txt")
+        items = "\n".join(
+            f"- [{a['title']}](https://rkec.sg/guides/{a['slug']}/): {a['desc']}"
+            for a in pub if a["slug"] != "taobao-furniture-assembly-singapore" or True
+        )
+        def _repl(m): return m.group(1) + items + "\n" + m.group(2)
+        l2 = re.sub(r"(## Guides\n)(?:.*?)(\n## Contact)", _repl, l, flags=re.S)
+        if l2 != l:
+            write("llms.txt", l2)
+    except FileNotFoundError:
+        pass
+
     print(f"[publish_due] {t}  live={len(pub)} hidden={len(soon)}")
     for a in pub:  print("  LIVE  ", a["slug"])
     for a in soon: print("  hidden", a["slug"], a["date"])
