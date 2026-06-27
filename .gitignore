@@ -6,3 +6,4 @@ Thumbs.db
 # (Google Drive keeps relocating "Examples image" into assets/)
 /assets/*
 !/assets/projects/
+!/assets/tailwind.css
