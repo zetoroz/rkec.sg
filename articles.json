@@ -88,6 +88,46 @@
       "category": "Renovation",
       "date": "2026-07-05",
       "hero": "hdb-study.jpg"
+    },
+    {
+      "slug": "end-of-tenancy-reinstatement-singapore",
+      "title": "End-of-tenancy reinstatement & make-good in Singapore: costs & checklist",
+      "desc": "Restore a rented home to handover condition — cleaning, repairs and repaint by one team, with real costs.",
+      "category": "Reinstatement",
+      "date": "2026-07-06",
+      "hero": "hdb-living.jpg"
+    },
+    {
+      "slug": "aircon-servicing-cost-singapore",
+      "title": "Aircon servicing & cleaning cost in Singapore",
+      "desc": "Cleaning vs chemical wash, leaking units and gas top-up — what each costs per unit.",
+      "category": "Aircon",
+      "date": "2026-07-07",
+      "hero": "hdb-living.jpg"
+    },
+    {
+      "slug": "hdb-toilet-renovation-cost",
+      "title": "HDB toilet renovation cost: hacking, re-tiling & waterproofing",
+      "desc": "The real sequence and cost of re-doing an HDB toilet — with the waterproofing you can't skip.",
+      "category": "Renovation",
+      "date": "2026-07-08",
+      "hero": "marble-bathroom.jpg"
+    },
+    {
+      "slug": "water-heater-replacement-singapore",
+      "title": "Water heater replacement cost in Singapore: storage vs instant",
+      "desc": "When to replace, storage vs instant, and why a licensed electrician must wire it.",
+      "category": "Plumbing",
+      "date": "2026-07-09",
+      "hero": "marble-bathroom.jpg"
+    },
+    {
+      "slug": "termite-treatment-cost-singapore",
+      "title": "Termite treatment cost in Singapore: signs, methods & price",
+      "desc": "Spotting termites in HDB timber, treatment options and realistic costs.",
+      "category": "Pest",
+      "date": "2026-07-10",
+      "hero": "hdb-study.jpg"
     }
   ]
 }
