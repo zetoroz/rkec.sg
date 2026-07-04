@@ -34,6 +34,10 @@ jobs:
           path: '.'
       - id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - name: Retry deploy if GitHub Pages backend hiccuped
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
       - name: Notify IndexNow (Bing / Copilot)
         run: python3 scripts/indexnow.py
         continue-on-error: true
