@@ -15,7 +15,7 @@
       "desc": "One team for cleaning plus make-good, painting and repairs — pass handover and protect your deposit.",
       "category": "Cleaning",
       "date": "2026-06-26",
-      "hero": "hdb-living.jpg"
+      "hero": "g-move-out-cleaning-checklist-hdb.jpg"
     },
     {
       "slug": "hdb-renovation-cost-singapore",
@@ -23,7 +23,7 @@
       "desc": "What flooring, painting and waterproofing actually cost — and where homeowners overspend.",
       "category": "Renovation",
       "date": "2026-06-27",
-      "hero": "hdb-study.jpg"
+      "hero": "g-hdb-renovation-cost-singapore.jpg"
     },
     {
       "slug": "vinyl-vs-laminate-flooring-hdb",
@@ -31,7 +31,7 @@
       "desc": "Water resistance, durability, cost and install — the quick verdict for Singapore homes.",
       "category": "Flooring",
       "date": "2026-06-28",
-      "hero": "vinyl-flooring.jpg"
+      "hero": "g-vinyl-vs-laminate-flooring-hdb.jpg"
     },
     {
       "slug": "hdb-bathroom-waterproofing",
@@ -39,7 +39,7 @@
       "desc": "Spotting a failing membrane, inter-floor leaks, and what a proper re-do involves.",
       "category": "Waterproofing",
       "date": "2026-06-29",
-      "hero": "marble-bathroom.jpg"
+      "hero": "g-hdb-bathroom-waterproofing.jpg"
     },
     {
       "slug": "leaking-tap-fixes-hdb",
@@ -47,7 +47,7 @@
       "desc": "Common causes, simple DIY fixes, and when a leak needs a licensed plumber.",
       "category": "Plumbing",
       "date": "2026-06-30",
-      "hero": "marble-bathroom.jpg"
+      "hero": "g-leaking-tap-fixes-hdb.jpg"
     },
     {
       "slug": "false-ceiling-cove-lighting-hdb",
@@ -55,7 +55,7 @@
       "desc": "Hiding trunking, height loss, downlights vs cove — and what each option costs.",
       "category": "Ceiling",
       "date": "2026-07-01",
-      "hero": "hdb-living.jpg"
+      "hero": "g-false-ceiling-cove-lighting-hdb.jpg"
     },
     {
       "slug": "painting-hdb-flat-cost",
@@ -63,7 +63,7 @@
       "desc": "Costs by flat size, primer vs 2 coats, and the prep that makes paint last.",
       "category": "Painting",
       "date": "2026-07-02",
-      "hero": "bedroom-reno.jpg"
+      "hero": "g-painting-hdb-flat-cost.jpg"
     },
     {
       "slug": "mount-tv-hdb-wall",
@@ -71,7 +71,7 @@
       "desc": "Brick vs hollow walls, the right anchors, cable hiding and avoiding a fallen TV.",
       "category": "Handyman",
       "date": "2026-07-03",
-      "hero": "carpentry-doors.jpg"
+      "hero": "g-mount-tv-hdb-wall.jpg"
     },
     {
       "slug": "hdb-hacking-demolition-rules",
@@ -79,7 +79,7 @@
       "desc": "What you can and can't hack, the permit, debris disposal and realistic costs.",
       "category": "Demolition",
       "date": "2026-07-04",
-      "hero": "herringbone-flooring.jpg"
+      "hero": "g-hdb-hacking-demolition-rules.jpg"
     },
     {
       "slug": "choose-renovation-contractor-singapore",
@@ -87,7 +87,7 @@
       "desc": "Red flags, the right questions, and how to avoid a renovation gone wrong.",
       "category": "Renovation",
       "date": "2026-07-05",
-      "hero": "hdb-study.jpg"
+      "hero": "g-choose-renovation-contractor-singapore.jpg"
     },
     {
       "slug": "end-of-tenancy-reinstatement-singapore",
@@ -95,7 +95,7 @@
       "desc": "Restore a rented home to handover condition — cleaning, repairs and repaint by one team, with real costs.",
       "category": "Reinstatement",
       "date": "2026-07-06",
-      "hero": "hdb-living.jpg"
+      "hero": "g-end-of-tenancy-reinstatement-singapore.jpg"
     },
     {
       "slug": "aircon-servicing-cost-singapore",
@@ -103,7 +103,7 @@
       "desc": "Cleaning vs chemical wash, leaking units and gas top-up — what each costs per unit.",
       "category": "Aircon",
       "date": "2026-07-07",
-      "hero": "hdb-living.jpg"
+      "hero": "g-aircon-servicing-cost-singapore.jpg"
     },
     {
       "slug": "hdb-toilet-renovation-cost",
@@ -111,7 +111,7 @@
       "desc": "The real sequence and cost of re-doing an HDB toilet — with the waterproofing you can't skip.",
       "category": "Renovation",
       "date": "2026-07-08",
-      "hero": "marble-bathroom.jpg"
+      "hero": "g-hdb-toilet-renovation-cost.jpg"
     },
     {
       "slug": "water-heater-replacement-singapore",
@@ -119,7 +119,7 @@
       "desc": "When to replace, storage vs instant, and why a licensed electrician must wire it.",
       "category": "Plumbing",
       "date": "2026-07-09",
-      "hero": "marble-bathroom.jpg"
+      "hero": "g-water-heater-replacement-singapore.jpg"
     },
     {
       "slug": "termite-treatment-cost-singapore",
@@ -127,7 +127,7 @@
       "desc": "Spotting termites in HDB timber, treatment options and realistic costs.",
       "category": "Pest",
       "date": "2026-07-10",
-      "hero": "hdb-study.jpg"
+      "hero": "g-termite-treatment-cost-singapore.jpg"
     },
     {
       "slug": "full-hdb-renovation-cost-breakdown",
@@ -135,7 +135,7 @@
       "desc": "Every line item from a real whole-flat renovation in Bukit Panjang — what it cost and why.",
       "category": "Renovation",
       "date": "2026-07-11",
-      "hero": "herringbone-flooring.jpg"
+      "hero": "g-full-hdb-renovation-cost-breakdown.jpg"
     }
   ]
 }
