@@ -136,6 +136,86 @@
       "category": "Renovation",
       "date": "2026-07-11",
       "hero": "g-full-hdb-renovation-cost-breakdown.jpg"
+    },
+    {
+      "slug": "hdb-kitchen-renovation-cost",
+      "title": "HDB kitchen renovation cost: cabinets, tiling & plumbing",
+      "desc": "Real costs to hack, tile, plumb and fit out an HDB kitchen — and what drives the price.",
+      "category": "Renovation",
+      "date": "2026-07-13",
+      "hero": "g-hdb-kitchen-renovation-cost.jpg"
+    },
+    {
+      "slug": "hdb-electrical-works-cost",
+      "title": "HDB electrical works cost: lights, points & rewiring",
+      "desc": "LED lights, data and power points, and why a licensed electrician (LEW) must do it.",
+      "category": "Electrical",
+      "date": "2026-07-15",
+      "hero": "g-hdb-electrical-works-cost.jpg"
+    },
+    {
+      "slug": "sliding-door-installation-singapore",
+      "title": "Sliding door installation in Singapore: types & cost",
+      "desc": "Glass, aluminium and slim-frame sliding doors — options, real cost and what to check.",
+      "category": "Carpentry",
+      "date": "2026-07-17",
+      "hero": "g-sliding-door-installation-singapore.jpg"
+    },
+    {
+      "slug": "cabinet-installation-cost-singapore",
+      "title": "Cabinet installation cost in Singapore: kitchen & wardrobe",
+      "desc": "Supply-and-install pricing, carcass vs custom carpentry, and anchoring done safely.",
+      "category": "Carpentry",
+      "date": "2026-07-19",
+      "hero": "g-cabinet-installation-cost-singapore.jpg"
+    },
+    {
+      "slug": "wall-plastering-skim-coat-cost",
+      "title": "Wall plastering & skim coat cost in Singapore",
+      "desc": "Why walls need skimming before paint, common defects, and what it costs per area.",
+      "category": "Plastering",
+      "date": "2026-07-21",
+      "hero": "g-wall-plastering-skim-coat-cost.jpg"
+    },
+    {
+      "slug": "bathroom-regrouting-silicone-sealant",
+      "title": "Bathroom regrouting & silicone reseal: cost & when",
+      "desc": "Mouldy grout and peeling silicone — when a reseal is enough and when to redo tiles.",
+      "category": "Waterproofing",
+      "date": "2026-07-23",
+      "hero": "g-bathroom-regrouting-silicone-sealant.jpg"
+    },
+    {
+      "slug": "kitchen-sink-choke-fix-singapore",
+      "title": "Kitchen sink choke in Singapore: causes, fixes & cost",
+      "desc": "Why sinks choke, safe DIY fixes, and when to call a plumber before it floods.",
+      "category": "Plumbing",
+      "date": "2026-07-25",
+      "hero": "g-kitchen-sink-choke-fix-singapore.jpg"
+    },
+    {
+      "slug": "hdb-door-repair-replacement-cost",
+      "title": "HDB door repair & replacement cost in Singapore",
+      "desc": "Sagging hinges, jammed locks, damaged doors — repair vs replace and what each costs.",
+      "category": "Carpentry",
+      "date": "2026-07-27",
+      "hero": "g-hdb-door-repair-replacement-cost.jpg"
+    },
+    {
+      "slug": "curtain-rail-blinds-installation-singapore",
+      "title": "Curtain rail & blinds installation in Singapore",
+      "desc": "Track vs rod, day-night blinds, drilling into different walls, and install cost.",
+      "category": "Handyman",
+      "date": "2026-07-29",
+      "hero": "g-curtain-rail-blinds-installation-singapore.jpg"
+    },
+    {
+      "slug": "move-in-cleaning-bto-resale",
+      "title": "Move-in cleaning for BTO & resale HDB: cost & scope",
+      "desc": "What a proper pre-move-in deep clean covers for a new BTO or resale flat.",
+      "category": "Cleaning",
+      "date": "2026-07-31",
+      "hero": "g-move-in-cleaning-bto-resale.jpg"
     }
   ]
 }
