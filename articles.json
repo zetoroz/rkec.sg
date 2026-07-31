@@ -216,6 +216,38 @@
       "category": "Cleaning",
       "date": "2026-07-31",
       "hero": "g-move-in-cleaning-bto-resale.jpg"
+    },
+    {
+      "slug": "furniture-assembly-cost-singapore",
+      "title": "Furniture assembly service in Singapore: our price list",
+      "desc": "Small items from $50, standard pieces $100, large multi-panel items from $200 — and $90 each above five pieces.",
+      "category": "Handyman",
+      "date": "2026-08-01",
+      "hero": "g-furniture-assembly-cost-singapore.jpg"
+    },
+    {
+      "slug": "drywall-partition-wall-cost-singapore",
+      "title": "Drywall & partition wall installation in Singapore",
+      "desc": "Stud-and-board build-up, drywall vs brick, real costs, and the backing you must plan before boarding.",
+      "category": "Drywall",
+      "date": "2026-08-03",
+      "hero": "g-drywall-partition-wall-cost-singapore.jpg"
+    },
+    {
+      "slug": "floor-trap-drain-choke-singapore",
+      "title": "Floor trap & drain choke in Singapore: causes, clearing & cost",
+      "desc": "Why floor traps choke, what to try safely yourself, clearing costs, and how to tell your pipe from the shared stack.",
+      "category": "Plumbing",
+      "date": "2026-08-05",
+      "hero": "g-floor-trap-drain-choke-singapore.jpg"
+    },
+    {
+      "slug": "repair-redecoration-works-singapore",
+      "title": "Repair & redecoration works in Singapore: scope & real costs",
+      "desc": "Three real RK E&C jobs itemised at $850, $3,675 and $4,380 — and how R&R differs from a full renovation.",
+      "category": "Repair & Redecoration",
+      "date": "2026-08-07",
+      "hero": "g-repair-redecoration-works-singapore.jpg"
     }
   ]
 }
