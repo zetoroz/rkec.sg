@@ -7,6 +7,7 @@
       "desc": "Typical costs, DIY vs hiring, wall-anchoring safety and common flat-pack problems.",
       "category": "Handyman",
       "date": "2026-06-24",
+      "modified": "2026-08-01",
       "hero": "taobao-assembly.jpg"
     },
     {
@@ -15,6 +16,7 @@
       "desc": "One team for cleaning plus make-good, painting and repairs — pass handover and protect your deposit.",
       "category": "Cleaning",
       "date": "2026-06-26",
+      "modified": "2026-08-01",
       "hero": "g-move-out-cleaning-checklist-hdb.jpg"
     },
     {
@@ -23,6 +25,7 @@
       "desc": "What flooring, painting and waterproofing actually cost — and where homeowners overspend.",
       "category": "Renovation",
       "date": "2026-06-27",
+      "modified": "2026-08-01",
       "hero": "g-hdb-renovation-cost-singapore.jpg"
     },
     {
@@ -31,6 +34,7 @@
       "desc": "Water resistance, durability, cost and install — the quick verdict for Singapore homes.",
       "category": "Flooring",
       "date": "2026-06-28",
+      "modified": "2026-08-01",
       "hero": "g-vinyl-vs-laminate-flooring-hdb.jpg"
     },
     {
@@ -39,6 +43,7 @@
       "desc": "Spotting a failing membrane, inter-floor leaks, and what a proper re-do involves.",
       "category": "Waterproofing",
       "date": "2026-06-29",
+      "modified": "2026-08-01",
       "hero": "g-hdb-bathroom-waterproofing.jpg"
     },
     {
@@ -47,6 +52,7 @@
       "desc": "Common causes, simple DIY fixes, and when a leak needs a licensed plumber.",
       "category": "Plumbing",
       "date": "2026-06-30",
+      "modified": "2026-08-01",
       "hero": "g-leaking-tap-fixes-hdb.jpg"
     },
     {
@@ -55,6 +61,7 @@
       "desc": "Hiding trunking, height loss, downlights vs cove — and what each option costs.",
       "category": "Ceiling",
       "date": "2026-07-01",
+      "modified": "2026-08-01",
       "hero": "g-false-ceiling-cove-lighting-hdb.jpg"
     },
     {
@@ -63,6 +70,7 @@
       "desc": "Costs by flat size, primer vs 2 coats, and the prep that makes paint last.",
       "category": "Painting",
       "date": "2026-07-02",
+      "modified": "2026-08-01",
       "hero": "g-painting-hdb-flat-cost.jpg"
     },
     {
@@ -71,6 +79,7 @@
       "desc": "Brick vs hollow walls, the right anchors, cable hiding and avoiding a fallen TV.",
       "category": "Handyman",
       "date": "2026-07-03",
+      "modified": "2026-08-01",
       "hero": "g-mount-tv-hdb-wall.jpg"
     },
     {
@@ -79,6 +88,7 @@
       "desc": "What you can and can't hack, the permit, debris disposal and realistic costs.",
       "category": "Demolition",
       "date": "2026-07-04",
+      "modified": "2026-08-01",
       "hero": "g-hdb-hacking-demolition-rules.jpg"
     },
     {
@@ -87,6 +97,7 @@
       "desc": "Red flags, the right questions, and how to avoid a renovation gone wrong.",
       "category": "Renovation",
       "date": "2026-07-05",
+      "modified": "2026-08-01",
       "hero": "g-choose-renovation-contractor-singapore.jpg"
     },
     {
@@ -95,6 +106,7 @@
       "desc": "Restore a rented home to handover condition — cleaning, repairs and repaint by one team, with real costs.",
       "category": "Reinstatement",
       "date": "2026-07-06",
+      "modified": "2026-08-01",
       "hero": "g-end-of-tenancy-reinstatement-singapore.jpg"
     },
     {
@@ -103,6 +115,7 @@
       "desc": "Cleaning vs chemical wash, leaking units and gas top-up — what each costs per unit.",
       "category": "Aircon",
       "date": "2026-07-07",
+      "modified": "2026-08-01",
       "hero": "g-aircon-servicing-cost-singapore.jpg"
     },
     {
@@ -111,6 +124,7 @@
       "desc": "The real sequence and cost of re-doing an HDB toilet — with the waterproofing you can't skip.",
       "category": "Renovation",
       "date": "2026-07-08",
+      "modified": "2026-08-01",
       "hero": "g-hdb-toilet-renovation-cost.jpg"
     },
     {
@@ -119,6 +133,7 @@
       "desc": "When to replace, storage vs instant, and why a licensed electrician must wire it.",
       "category": "Plumbing",
       "date": "2026-07-09",
+      "modified": "2026-08-01",
       "hero": "g-water-heater-replacement-singapore.jpg"
     },
     {
@@ -127,6 +142,7 @@
       "desc": "Spotting termites in HDB timber, treatment options and realistic costs.",
       "category": "Pest",
       "date": "2026-07-10",
+      "modified": "2026-08-01",
       "hero": "g-termite-treatment-cost-singapore.jpg"
     },
     {
@@ -135,6 +151,7 @@
       "desc": "Every line item from a real whole-flat renovation in Bukit Panjang — what it cost and why.",
       "category": "Renovation",
       "date": "2026-07-11",
+      "modified": "2026-08-01",
       "hero": "g-full-hdb-renovation-cost-breakdown.jpg"
     },
     {
@@ -143,6 +160,7 @@
       "desc": "Real costs to hack, tile, plumb and fit out an HDB kitchen — and what drives the price.",
       "category": "Renovation",
       "date": "2026-07-13",
+      "modified": "2026-08-01",
       "hero": "g-hdb-kitchen-renovation-cost.jpg"
     },
     {
@@ -151,6 +169,7 @@
       "desc": "LED lights, data and power points, and why a licensed electrician (LEW) must do it.",
       "category": "Electrical",
       "date": "2026-07-15",
+      "modified": "2026-08-01",
       "hero": "g-hdb-electrical-works-cost.jpg"
     },
     {
@@ -159,6 +178,7 @@
       "desc": "Glass, aluminium and slim-frame sliding doors — options, real cost and what to check.",
       "category": "Carpentry",
       "date": "2026-07-17",
+      "modified": "2026-08-01",
       "hero": "g-sliding-door-installation-singapore.jpg"
     },
     {
@@ -167,6 +187,7 @@
       "desc": "Supply-and-install pricing, carcass vs custom carpentry, and anchoring done safely.",
       "category": "Carpentry",
       "date": "2026-07-19",
+      "modified": "2026-08-01",
       "hero": "g-cabinet-installation-cost-singapore.jpg"
     },
     {
@@ -175,6 +196,7 @@
       "desc": "Why walls need skimming before paint, common defects, and what it costs per area.",
       "category": "Plastering",
       "date": "2026-07-21",
+      "modified": "2026-08-01",
       "hero": "g-wall-plastering-skim-coat-cost.jpg"
     },
     {
@@ -183,6 +205,7 @@
       "desc": "Mouldy grout and peeling silicone — when a reseal is enough and when to redo tiles.",
       "category": "Waterproofing",
       "date": "2026-07-23",
+      "modified": "2026-08-01",
       "hero": "g-bathroom-regrouting-silicone-sealant.jpg"
     },
     {
@@ -191,6 +214,7 @@
       "desc": "Why sinks choke, safe DIY fixes, and when to call a plumber before it floods.",
       "category": "Plumbing",
       "date": "2026-07-25",
+      "modified": "2026-08-01",
       "hero": "g-kitchen-sink-choke-fix-singapore.jpg"
     },
     {
@@ -199,6 +223,7 @@
       "desc": "Sagging hinges, jammed locks, damaged doors — repair vs replace and what each costs.",
       "category": "Carpentry",
       "date": "2026-07-27",
+      "modified": "2026-08-01",
       "hero": "g-hdb-door-repair-replacement-cost.jpg"
     },
     {
@@ -207,6 +232,7 @@
       "desc": "Track vs rod, day-night blinds, drilling into different walls, and install cost.",
       "category": "Handyman",
       "date": "2026-07-29",
+      "modified": "2026-08-01",
       "hero": "g-curtain-rail-blinds-installation-singapore.jpg"
     },
     {
@@ -215,6 +241,7 @@
       "desc": "What a proper pre-move-in deep clean covers for a new BTO or resale flat.",
       "category": "Cleaning",
       "date": "2026-07-31",
+      "modified": "2026-08-01",
       "hero": "g-move-in-cleaning-bto-resale.jpg"
     },
     {
@@ -223,6 +250,7 @@
       "desc": "Small items from $50, standard pieces $100, large multi-panel items from $200 — and $90 each above five pieces.",
       "category": "Handyman",
       "date": "2026-08-01",
+      "modified": "2026-08-01",
       "hero": "g-furniture-assembly-cost-singapore.jpg"
     },
     {

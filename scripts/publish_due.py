@@ -112,7 +112,7 @@ def main():
     urls = [("https://rkec.sg/", iso, "weekly", "1.0"),
             ("https://rkec.sg/guides/", iso, "weekly", "0.7")]
     for a in sorted(pub, key=lambda a: a["_d"]):
-        urls.append((f"https://rkec.sg/guides/{a['slug']}/", a["date"], "monthly", "0.8"))
+        urls.append((f"https://rkec.sg/guides/{a['slug']}/", a.get("modified") or a["date"], "monthly", "0.8"))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, lm, cf, pr in urls:
