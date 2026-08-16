@@ -276,6 +276,60 @@
       "category": "Repair & Redecoration",
       "date": "2026-08-07",
       "hero": "g-repair-redecoration-works-singapore.jpg"
+    },
+    {
+      "slug": "hdb-rewiring-cost-singapore",
+      "title": "HDB rewiring cost in Singapore: full vs partial",
+      "desc": "What a full or partial rewire costs by flat type, the seven signs a flat needs one, and the LEW rule.",
+      "category": "Electrical",
+      "date": "2026-08-16",
+      "modified": "2026-08-16",
+      "hero": "g-hdb-rewiring-cost-singapore.jpg"
+    },
+    {
+      "slug": "pest-control-price-singapore",
+      "title": "Pest control price in Singapore: a price list by pest",
+      "desc": "Cockroaches, rodents, bed bugs, mosquitoes and termites priced separately, and when a contract beats a one-off.",
+      "category": "Pest",
+      "date": "2026-08-19",
+      "modified": "2026-08-19",
+      "hero": "g-pest-control-price-singapore.jpg"
+    },
+    {
+      "slug": "door-installation-singapore",
+      "title": "Door installation in Singapore: cost by door type",
+      "desc": "Main door and gate sets, bedroom, bi-fold and fire-rated doors priced, plus the frame rule that decides your permit.",
+      "category": "Carpentry",
+      "date": "2026-08-22",
+      "modified": "2026-08-22",
+      "hero": "g-door-installation-singapore.jpg"
+    },
+    {
+      "slug": "drywall-contractor-singapore",
+      "title": "Drywall contractor in Singapore: services & how to choose one",
+      "desc": "What drywall services cover, what a proper job looks like day by day, and the four questions that sort the quotes.",
+      "category": "Drywall",
+      "date": "2026-08-25",
+      "modified": "2026-08-25",
+      "hero": "g-drywall-contractor-singapore.jpg"
+    },
+    {
+      "slug": "hdb-window-replacement-cost-singapore",
+      "title": "HDB window replacement cost in Singapore",
+      "desc": "Casement, sliding and top-hung prices per window, the BCA-approved contractor rule, and when a repair beats replacing.",
+      "category": "Windows",
+      "date": "2026-08-28",
+      "modified": "2026-08-28",
+      "hero": "g-hdb-window-replacement-cost-singapore.jpg"
+    },
+    {
+      "slug": "built-in-wardrobe-carpentry-cost-singapore",
+      "title": "Built-in wardrobe & carpentry cost in Singapore",
+      "desc": "What carpentry costs per foot run, what that rate hides, and when building in beats buying loose furniture.",
+      "category": "Carpentry",
+      "date": "2026-08-31",
+      "modified": "2026-08-31",
+      "hero": "g-built-in-wardrobe-carpentry-cost-singapore.jpg"
     }
   ]
 }
