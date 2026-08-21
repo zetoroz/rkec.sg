@@ -7,6 +7,7 @@ Thumbs.db
 /assets/*
 !/assets/projects/
 !/assets/tailwind.css
+!/assets/analytics.js
 
 # never publish zips / bulky sources
 *.zip
