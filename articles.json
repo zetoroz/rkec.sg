@@ -70,7 +70,7 @@
       "desc": "Costs by flat size, primer vs 2 coats, and the prep that makes paint last.",
       "category": "Painting",
       "date": "2026-07-02",
-      "modified": "2026-08-01",
+      "modified": "2026-08-28",
       "hero": "g-painting-hdb-flat-cost.jpg"
     },
     {
@@ -115,7 +115,7 @@
       "desc": "Cleaning vs chemical wash, leaking units and gas top-up: what each costs per unit.",
       "category": "Aircon",
       "date": "2026-07-07",
-      "modified": "2026-08-16",
+      "modified": "2026-08-28",
       "hero": "g-aircon-servicing-cost-singapore.jpg"
     },
     {
@@ -124,7 +124,7 @@
       "desc": "The real sequence and cost of re-doing an HDB toilet, with the waterproofing you can't skip.",
       "category": "Renovation",
       "date": "2026-07-08",
-      "modified": "2026-08-01",
+      "modified": "2026-08-28",
       "hero": "g-hdb-toilet-renovation-cost.jpg"
     },
     {
@@ -178,7 +178,7 @@
       "desc": "Glass, aluminium and slim-frame sliding doors: options, real cost and what to check.",
       "category": "Carpentry",
       "date": "2026-07-17",
-      "modified": "2026-08-01",
+      "modified": "2026-08-28",
       "hero": "g-sliding-door-installation-singapore.jpg"
     },
     {
@@ -196,7 +196,7 @@
       "desc": "Why walls need skimming before paint, common defects, and what it costs per area.",
       "category": "Plastering",
       "date": "2026-07-21",
-      "modified": "2026-08-01",
+      "modified": "2026-08-28",
       "hero": "g-wall-plastering-skim-coat-cost.jpg"
     },
     {
@@ -330,6 +330,33 @@
       "date": "2026-08-31",
       "modified": "2026-08-31",
       "hero": "g-built-in-wardrobe-carpentry-cost-singapore.jpg"
+    },
+    {
+      "slug": "shower-screen-installation-cost-singapore",
+      "title": "Shower screen installation cost in Singapore",
+      "desc": "Fixed panel or full enclosure, silver or black frame, priced from a real 2026 quote, plus the fixing detail that protects your waterproofing.",
+      "category": "Glass",
+      "date": "2026-09-03",
+      "modified": "2026-09-03",
+      "hero": "g-shower-screen-installation-cost-singapore.jpg"
+    },
+    {
+      "slug": "aircon-piping-installation-cost-singapore",
+      "title": "Aircon piping replacement & installation cost in Singapore",
+      "desc": "What new copper piping, trunking, a unit shift and a condensate pump cost, and the R22 pipework trap behind repeat gas leaks.",
+      "category": "Aircon",
+      "date": "2026-09-06",
+      "modified": "2026-09-06",
+      "hero": "g-aircon-piping-installation-cost-singapore.jpg"
+    },
+    {
+      "slug": "peeling-paint-wall-repair-singapore",
+      "title": "Peeling paint & failing walls: repaint, skim or replaster?",
+      "desc": "How to tell a paint problem from a wall problem with a knuckle, and the five-fold price gap between the two fixes.",
+      "category": "Painting",
+      "date": "2026-09-09",
+      "modified": "2026-09-09",
+      "hero": "g-peeling-paint-wall-repair-singapore.jpg"
     }
   ]
 }
