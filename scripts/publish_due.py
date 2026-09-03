@@ -18,6 +18,14 @@ from datetime import datetime, timezone, timedelta, date
 ROOT = __file__.rsplit("/scripts/", 1)[0]
 SG = timezone(timedelta(hours=8))
 
+# Standalone service pages (commercial intent), outside the articles.json drip.
+SERVICE_PAGES = [
+    "handyman-singapore",
+    "water-heater-installation-singapore",
+    "termite-treatment-singapore",
+]
+
+
 def today():
     if len(sys.argv) > 1:
         return date.fromisoformat(sys.argv[1])
@@ -111,6 +119,9 @@ def main():
     iso = t.isoformat()
     urls = [("https://rkec.sg/", iso, "weekly", "1.0"),
             ("https://rkec.sg/guides/", iso, "weekly", "0.7")]
+    # Standalone service pages: hand-written, not driven by articles.json.
+    # They live outside guides/ so they must be listed here or the rebuild drops them.
+    urls += [(f"https://rkec.sg/{s}/", iso, "monthly", "0.9") for s in SERVICE_PAGES]
     for a in sorted(pub, key=lambda a: a["_d"]):
         urls.append((f"https://rkec.sg/guides/{a['slug']}/", a.get("modified") or a["date"], "monthly", "0.8"))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
