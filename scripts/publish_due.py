@@ -25,6 +25,20 @@ SERVICE_PAGES = [
     "termite-treatment-singapore",
 ]
 
+# Service pages with a release date. Until then they keep noindex (RKEC-FLAG),
+# stay out of sitemap.xml, and their llms.txt line is not added. Once due they
+# behave exactly like SERVICE_PAGES. (slug, date, llms.txt line under ## Services)
+SCHEDULED_SERVICE_PAGES = [
+    ("move-out-cleaning-singapore", "2026-09-29",
+     "- [Move-Out Cleaning](https://rkec.sg/move-out-cleaning-singapore/): move-out and end-of-tenancy "
+     "packages combining deep clean, paint touch-up, aircon servicing and make-good in one visit. "
+     "From $480 for a 2-bedroom condo; full handover from $850."),
+    ("painting-services-singapore", "2026-10-02",
+     "- [Painting Services](https://rkec.sg/painting-services-singapore/): HDB and condo painting, "
+     "whole-flat repaints from $450 (3-room), rooms from $120, ceilings, touch-up, anti-mould, "
+     "sealer and plaster repair."),
+]
+
 
 def today():
     if len(sys.argv) > 1:
@@ -102,6 +116,23 @@ def main():
         if nh != h:
             write(p, nh)
 
+    # 1b. scheduled service pages: same robots flip, keyed on their own date
+    due_services = []
+    for slug, d, _ in SCHEDULED_SERVICE_PAGES:
+        is_due = date.fromisoformat(d) <= t
+        if is_due:
+            due_services.append((slug, d))
+        p = f"{slug}/index.html"
+        try:
+            h = read(p)
+        except FileNotFoundError:
+            print(f"WARN missing {p}"); continue
+        content = "index, follow" if is_due else "noindex"
+        nh = re.sub(r'<meta name="robots"[^>]*/?><!--RKEC-FLAG-->',
+                    f'<meta name="robots" content="{content}" /><!--RKEC-FLAG-->', h)
+        if nh != h:
+            write(p, nh)
+
     # 2. homepage featured cards (3 newest published)
     h = read("index.html")
     home_body = "          " + "\n          ".join(home_card(a) for a in pub[:3])
@@ -122,6 +153,7 @@ def main():
     # Standalone service pages: hand-written, not driven by articles.json.
     # They live outside guides/ so they must be listed here or the rebuild drops them.
     urls += [(f"https://rkec.sg/{s}/", iso, "monthly", "0.9") for s in SERVICE_PAGES]
+    urls += [(f"https://rkec.sg/{s}/", d, "monthly", "0.9") for s, d in due_services]
     for a in sorted(pub, key=lambda a: a["_d"]):
         urls.append((f"https://rkec.sg/guides/{a['slug']}/", a.get("modified") or a["date"], "monthly", "0.8"))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -141,6 +173,9 @@ def main():
         )
         def _repl(m): return m.group(1) + items + "\n" + m.group(2)
         l2 = re.sub(r"(## Guides\n)(?:.*?)(\n## Contact)", _repl, l, flags=re.S)
+        for slug, d, line in SCHEDULED_SERVICE_PAGES:
+            if date.fromisoformat(d) <= t and f"https://rkec.sg/{slug}/" not in l2:
+                l2 = re.sub(r"(## Services\n.*?)(\n+## )", lambda m: m.group(1).rstrip("\n") + "\n" + line + m.group(2), l2, count=1, flags=re.S)
         if l2 != l:
             write("llms.txt", l2)
     except FileNotFoundError:
@@ -149,6 +184,8 @@ def main():
     print(f"[publish_due] {t}  live={len(pub)} hidden={len(soon)}")
     for a in pub:  print("  LIVE  ", a["slug"])
     for a in soon: print("  hidden", a["slug"], a["date"])
+    for slug, d, _ in SCHEDULED_SERVICE_PAGES:
+        print("  SERVICE" if date.fromisoformat(d) <= t else "  hidden-service", slug, d)
 
 if __name__ == "__main__":
     main()

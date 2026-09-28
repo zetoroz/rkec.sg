@@ -16,7 +16,7 @@
       "desc": "One team for cleaning plus make-good, painting and repairs, so you pass handover and protect your deposit.",
       "category": "Cleaning",
       "date": "2026-06-26",
-      "modified": "2026-08-01",
+      "modified": "2026-09-28",
       "hero": "g-move-out-cleaning-checklist-hdb.jpg"
     },
     {
@@ -70,7 +70,7 @@
       "desc": "Costs by flat size, primer vs 2 coats, and the prep that makes paint last.",
       "category": "Painting",
       "date": "2026-07-02",
-      "modified": "2026-08-28",
+      "modified": "2026-09-28",
       "hero": "g-painting-hdb-flat-cost.jpg"
     },
     {
@@ -106,7 +106,7 @@
       "desc": "Restore a rented home to handover condition: cleaning, repairs and repaint by one team, with real costs.",
       "category": "Reinstatement",
       "date": "2026-07-06",
-      "modified": "2026-08-01",
+      "modified": "2026-09-28",
       "hero": "g-end-of-tenancy-reinstatement-singapore.jpg"
     },
     {
@@ -223,7 +223,7 @@
       "desc": "Sagging hinges, jammed locks, damaged doors: repair vs replace and what each costs.",
       "category": "Carpentry",
       "date": "2026-07-27",
-      "modified": "2026-08-01",
+      "modified": "2026-09-28",
       "hero": "g-hdb-door-repair-replacement-cost.jpg"
     },
     {
@@ -355,8 +355,62 @@
       "desc": "How to tell a paint problem from a wall problem with a knuckle, and the five-fold price gap between the two fixes.",
       "category": "Painting",
       "date": "2026-09-09",
-      "modified": "2026-09-09",
+      "modified": "2026-09-28",
       "hero": "g-peeling-paint-wall-repair-singapore.jpg"
+    },
+    {
+      "slug": "anti-mould-paint-singapore",
+      "title": "Anti-mould paint in Singapore: does it work?",
+      "desc": "When an anti-mould finish solves bathroom and bedroom mould, when it only hides a leak, and the prep that decides whether it lasts.",
+      "category": "Painting",
+      "date": "2026-10-05",
+      "modified": "2026-10-05",
+      "hero": "g-anti-mould-paint-singapore.jpg"
+    },
+    {
+      "slug": "paint-touch-up-singapore",
+      "title": "Paint touch-up before handover: when it blends",
+      "desc": "Why touch-ups show, the rule for touching up versus repainting a wall, filling holes so they vanish, and two real move-out prices.",
+      "category": "Painting",
+      "date": "2026-10-08",
+      "modified": "2026-10-08",
+      "hero": "g-paint-touch-up-singapore.jpg"
+    },
+    {
+      "slug": "ceiling-painting-water-stain-singapore",
+      "title": "Ceiling painting & water stains: seal, then paint",
+      "desc": "Why water stains bleed back through new paint, the sealer that stops it, who pays for an inter-floor leak, and ceiling costs.",
+      "category": "Painting",
+      "date": "2026-10-11",
+      "modified": "2026-10-11",
+      "hero": "g-ceiling-painting-water-stain-singapore.jpg"
+    },
+    {
+      "slug": "toilet-bifold-door-repair-singapore",
+      "title": "Toilet & bi-fold door repair: fix or replace?",
+      "desc": "Why PVC bi-fold toilet doors jam, drop and come off the track, an $80 real repair, and when a new door makes more sense.",
+      "category": "Handyman",
+      "date": "2026-10-14",
+      "modified": "2026-10-14",
+      "hero": "g-toilet-bifold-door-repair-singapore.jpg"
+    },
+    {
+      "slug": "parquet-timber-varnish-singapore",
+      "title": "Parquet & timber varnish: recoat or sand back?",
+      "desc": "How to tell if a lacquer recoat is enough, lacquer vs PU, what can't be varnished, and a real $430 floor-and-built-ins job.",
+      "category": "Carpentry",
+      "date": "2026-10-17",
+      "modified": "2026-10-17",
+      "hero": "g-parquet-timber-varnish-singapore.jpg"
+    },
+    {
+      "slug": "toilet-seat-replacement-singapore",
+      "title": "Toilet seat replacement: getting a seat that fits",
+      "desc": "Measuring the bowl, top-fix vs bottom-fix hinges, soft-close and brand seats, seat prices, and when the bowl is the real problem.",
+      "category": "Handyman",
+      "date": "2026-10-20",
+      "modified": "2026-10-20",
+      "hero": "g-toilet-seat-replacement-singapore.jpg"
     }
   ]
 }
