@@ -47,357 +47,490 @@
   }
   </script>
 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/projects/hdb-living.jpg">
 
   <link rel="stylesheet" href="/assets/tailwind.css" />
   <style>
-    :root { --ease-spring: cubic-bezier(0.16, 1, 0.3, 1); }
+    :root {
+      --cream: #F7F4EF; --paper: #FCFAF6; --ink: #15233B; --navy: #1B2D49;
+      --clay: #C26A3C; --clay-deep: #A9542B; --muted: #5B6472; --line: #E6E0D6;
+      --grid: rgba(21,35,59,.055); --grid-strong: rgba(21,35,59,.09);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --mono: "Martian Mono", ui-monospace, monospace;
+      --gutter: clamp(1.25rem, 4vw, 2.5rem);
+    }
     html { scroll-behavior: smooth; }
-    body { background: #F7F4EF; }
-
-    .grain::before {
-      content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      opacity: 0.035; mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    .aura {
-      background:
-        radial-gradient(60rem 40rem at 78% -8%, rgba(194,106,60,0.12), transparent 60%),
-        radial-gradient(50rem 38rem at 8% 8%, rgba(27,45,73,0.07), transparent 55%);
-    }
+    body { background: var(--cream); color: var(--ink); }
     .text-balance { text-wrap: balance; }
+    .rk-wrap { max-width: 78rem; margin: 0 auto; padding: 0 var(--gutter); }
+    .rk-mono { font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+    .rk-label { display: inline-flex; align-items: center; gap: .6rem; color: var(--clay-deep); }
+    .rk-label::before { content: ""; width: 1.75rem; height: 1px; background: currentColor; }
+    .rk-h2 { font-family: Fraunces, serif; font-weight: 450; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.02; letter-spacing: -.025em; }
+    .rk-h2 em { font-style: italic; color: var(--clay); }
 
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s var(--ease-spring), transform .8s var(--ease-spring); }
+    /* ── Buttons ── */
+    .rk-btn { display: inline-flex; align-items: center; gap: .6rem; border-radius: .6rem; padding: .95rem 1.4rem; font-weight: 700; font-size: .95rem; transition: transform .25s var(--ease), background .2s, box-shadow .25s; cursor: pointer; }
+    .rk-btn svg { width: 1.05rem; height: 1.05rem; transition: transform .25s var(--ease); }
+    .rk-btn:hover svg { transform: translateX(3px); }
+    .rk-btn--clay { background: var(--clay); color: var(--cream); box-shadow: 0 10px 26px -12px rgba(194,106,60,.75), inset 0 -2px 0 rgba(0,0,0,.14); }
+    .rk-btn--clay:hover { background: var(--clay-deep); transform: translateY(-2px); }
+    .rk-btn--line { border: 1px solid rgba(21,35,59,.22); color: var(--ink); background: rgba(252,250,246,.7); }
+    .rk-btn--line:hover { border-color: var(--ink); transform: translateY(-2px); }
+    .rk-btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+
+    /* ── Nav ── */
+    .rk-nav { position: sticky; top: 0; z-index: 50; background: rgba(247,244,239,.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .rk-nav__in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 4.25rem; }
+    .rk-logo { display: flex; align-items: center; gap: .7rem; }
+    .rk-logo__mark { display: grid; place-items: center; width: 2.35rem; height: 2.35rem; background: var(--ink); color: var(--cream); font-family: Fraunces, serif; font-weight: 600; border-radius: .45rem; position: relative; }
+    .rk-logo__mark::after { content: ""; position: absolute; right: -3px; bottom: -3px; width: .55rem; height: .55rem; background: var(--clay); border-radius: 2px; }
+    .rk-logo__name { font-family: Fraunces, serif; font-weight: 600; font-size: 1.15rem; letter-spacing: -.01em; line-height: 1; }
+    .rk-logo__name small { display: block; margin-top: .3rem; font-family: var(--mono); font-size: .55rem; letter-spacing: .1em; color: var(--muted); font-weight: 400; }
+    .rk-nav__links { display: none; gap: 2rem; font-size: .88rem; font-weight: 600; color: var(--muted); }
+    .rk-nav__links a { position: relative; transition: color .2s; }
+    .rk-nav__links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -4px; height: 1.5px; background: var(--clay); transition: right .3s var(--ease); }
+    .rk-nav__links a:hover { color: var(--ink); }
+    .rk-nav__links a:hover::after { right: 0; }
+    .rk-nav .rk-btn { padding: .65rem 1rem; font-size: .85rem; }
+    @media (min-width: 900px) { .rk-nav__links { display: flex; } }
+
+    /* ── Hero ── */
+    .rk-hero { position: relative; overflow: hidden; padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6.5rem); }
+    .rk-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-strong) 1px, transparent 1px), linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px),
+        linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 75% at 60% 40%, #000 30%, transparent 78%);
+              mask-image: radial-gradient(ellipse 80% 75% at 60% 40%, #000 30%, transparent 78%); }
+    .rk-hero__grid { position: relative; display: grid; gap: 3.5rem; align-items: center; }
+    @media (min-width: 1024px) { .rk-hero__grid { grid-template-columns: 1.08fr .92fr; gap: 4.5rem; } }
+    .rk-hero__meta { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; color: var(--muted); }
+    .rk-hero__meta span { display: inline-flex; align-items: center; gap: .5rem; }
+    .rk-hero__meta span:first-child::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46,158,91,.16); }
+    .rk-h1 { margin-top: 1.6rem; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(3.5rem, 9vw, 6.4rem); line-height: .92; letter-spacing: -.045em; font-variation-settings: "opsz" 144; }
+    .rk-h1 .clean { position: relative; font-style: italic; color: var(--clay); white-space: nowrap; }
+    .rk-h1 .clean svg { position: absolute; left: -2%; bottom: -.14em; width: 104%; height: .32em; overflow: visible; }
+    .rk-h1 .clean path { stroke-dasharray: 420; stroke-dashoffset: 420; animation: draw 1.1s .9s var(--ease) forwards; }
+    .rk-lede { margin-top: 1.8rem; max-width: 34rem; font-size: 1.1rem; line-height: 1.7; color: var(--muted); }
+    .rk-lede strong { color: var(--ink); font-weight: 500; }
+    .rk-hero__cta { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: .8rem; }
+    .rk-hero__call { margin-top: 1.6rem; font-size: .9rem; color: var(--muted); }
+    .rk-hero__call a { color: var(--ink); font-weight: 700; border-bottom: 1.5px solid var(--clay); }
+
+    /* Drawing: photo + dimension lines */
+    .rk-drawing { position: relative; margin: 2rem 2.2rem 0 0; }
+    .rk-drawing__photo { position: relative; overflow: hidden; border-radius: .35rem; aspect-ratio: 4 / 4.4; background: #d9d2c6; box-shadow: 0 40px 60px -40px rgba(21,35,59,.45); }
+    .rk-drawing__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; transform: scale(1.06); animation: settle 1.6s .2s var(--ease) forwards; }
+    .rk-dim { position: absolute; color: var(--muted); }
+    .rk-dim--top { left: 0; right: 0; top: -1.6rem; height: .7rem; border-left: 1px solid; border-right: 1px solid; }
+    .rk-dim--top::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid; }
+    .rk-dim--side { top: 0; bottom: 0; right: -1.6rem; width: .7rem; border-top: 1px solid; border-bottom: 1px solid; }
+    .rk-dim--side::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px solid; }
+    .rk-dim span { position: absolute; background: var(--cream); padding: 0 .5rem; white-space: nowrap; }
+    .rk-dim--top span { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    .rk-dim--side span { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+    .rk-drawing__tag { position: absolute; top: 1rem; left: 1rem; background: rgba(21,35,59,.82); color: var(--cream); padding: .45rem .65rem; border-radius: .25rem; backdrop-filter: blur(4px); }
+
+    /* Pinned quote sheet */
+    .rk-sheet { position: absolute; left: -3rem; bottom: -5rem; width: min(19rem, 86%); background: var(--paper); padding: 1.35rem 1.35rem 1.1rem; border-radius: .25rem; box-shadow: 0 1px 0 var(--line), 0 24px 40px -18px rgba(21,35,59,.4); transform: rotate(-2.2deg); animation: drop .9s .55s var(--ease) both; }
+    .rk-sheet::before { content: ""; position: absolute; left: 0; right: 0; top: -6px; height: 7px;
+      background: radial-gradient(circle at 5px 0, transparent 4px, var(--paper) 4.5px) 0 0 / 10px 7px repeat-x; }
+    .rk-sheet__head { display: flex; justify-content: space-between; color: var(--muted); padding-bottom: .7rem; border-bottom: 1.5px solid var(--ink); }
+    .rk-sheet__row { display: flex; align-items: baseline; gap: .4rem; padding: .62rem 0; font-size: .86rem; border-bottom: 1px dashed var(--line); }
+    .rk-sheet__row b { font-weight: 600; }
+    .rk-sheet__row i { flex: 1; border-bottom: 1px dotted rgba(21,35,59,.3); transform: translateY(-3px); }
+    .rk-sheet__row span { font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; color: var(--clay-deep); }
+    .rk-sheet__foot { margin-top: .7rem; color: var(--muted); font-size: .6rem; }
+    .rk-stamp { position: absolute; right: -3.2rem; top: -4.6rem; width: 6.6rem; height: 6.6rem; color: var(--clay); transform: rotate(14deg); animation: stamp .5s 1.35s cubic-bezier(.3,1.6,.5,1) both; }
+    .rk-stamp text { font-family: var(--mono); font-size: 8.4px; letter-spacing: 1.6px; fill: currentColor; }
+    @media (min-width: 641px) and (max-width: 1023px) { .rk-drawing { margin-bottom: 4rem; } }
+    @media (max-width: 640px) { .rk-drawing { margin-right: 1.8rem; } .rk-dim--side { display: none; } .rk-sheet { position: relative; left: auto; bottom: auto; width: 92%; margin: -3.2rem 0 0 -.4rem; } .rk-stamp { right: -1.4rem; top: -3.8rem; width: 5.6rem; height: 5.6rem; } .rk-hero__cta .rk-btn { flex: 1 1 100%; justify-content: center; } }
+
+    /* ── Price rail ── */
+    .rk-rail { background: var(--ink); color: var(--cream); }
+    .rk-rail__grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 900px) { .rk-rail__grid { grid-template-columns: repeat(4, 1fr); } }
+    .rk-rail a, .rk-rail div.cell { position: relative; display: block; padding: 1.9rem 1.4rem 1.7rem; border-left: 1px solid rgba(247,244,239,.12); transition: background .25s; }
+    .rk-rail__grid > :nth-child(odd) { border-left: 0; }
+    @media (min-width: 900px) { .rk-rail__grid > :nth-child(odd) { border-left: 1px solid rgba(247,244,239,.12); } .rk-rail__grid > :first-child { border-left: 0; } }
+    @media (max-width: 899px) { .rk-rail__grid > :nth-child(-n+2) { border-bottom: 1px solid rgba(247,244,239,.12); } }
+    .rk-rail a:hover { background: rgba(247,244,239,.05); }
+    .rk-rail .k { color: rgba(247,244,239,.6); }
+    .rk-rail .v { margin-top: .7rem; font-family: Fraunces, serif; font-size: clamp(2rem, 4vw, 2.7rem); line-height: 1; letter-spacing: -.03em; }
+    .rk-rail .v small { font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; color: var(--clay); vertical-align: top; margin-right: .3rem; text-transform: uppercase; }
+    .rk-rail .u { margin-top: .5rem; font-size: .82rem; color: rgba(247,244,239,.7); }
+    .rk-rail a .arr { position: absolute; top: 1.7rem; right: 1.3rem; width: 1rem; height: 1rem; color: var(--clay); transition: transform .25s var(--ease); }
+    .rk-rail a:hover .arr { transform: translate(3px, -3px); }
+
+    /* ── Sections ── */
+    .rk-sec { padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+    .rk-sec__head { display: grid; gap: 1.5rem; align-items: end; margin-bottom: 3.2rem; }
+    @media (min-width: 900px) { .rk-sec__head { grid-template-columns: 1.3fr 1fr; gap: 4rem; } }
+    .rk-sec__head p { font-size: 1.05rem; line-height: 1.7; color: var(--muted); max-width: 30rem; }
+
+    /* Schedule of works */
+    .rk-sched { border-top: 1.5px solid var(--ink); }
+    .rk-sched__row { position: relative; display: grid; grid-template-columns: 2.6rem 1fr; gap: .35rem 1rem; padding: 1.35rem .9rem 1.35rem .5rem; border-bottom: 1px solid var(--line); transition: background .3s var(--ease), color .3s; }
+    .rk-sched__row .n { grid-row: span 2; color: var(--clay-deep); padding-top: .45rem; }
+    .rk-sched__row h3 { font-family: Fraunces, serif; font-size: 1.45rem; font-weight: 450; letter-spacing: -.015em; line-height: 1.2; }
+    .rk-sched__row p { font-size: .94rem; line-height: 1.65; color: var(--muted); transition: color .3s; }
+    .rk-sched__row .go { grid-column: 2; display: inline-flex; align-items: center; gap: .45rem; font-size: .84rem; font-weight: 700; color: var(--ink); margin-top: .3rem; }
+    .rk-sched__row .go svg { width: .95rem; height: .95rem; transition: transform .25s var(--ease); }
+    .rk-sched__row .go .price { font-family: var(--mono); font-size: .64rem; font-weight: 500; letter-spacing: .05em; color: var(--clay-deep); padding: .2rem .45rem; border: 1px solid rgba(194,106,60,.4); border-radius: .2rem; }
+    .rk-sched__row .go.quiet { color: var(--muted); font-weight: 500; }
+    a.rk-sched__row { cursor: pointer; }
+    a.rk-sched__row:hover { background: var(--ink); color: var(--cream); }
+    a.rk-sched__row:hover p { color: rgba(247,244,239,.72); }
+    a.rk-sched__row:hover .go { color: var(--cream); }
+    a.rk-sched__row:hover .go svg { transform: translateX(4px); }
+    a.rk-sched__row:hover .n { color: var(--clay); }
+    @media (min-width: 900px) {
+      .rk-sched__row { grid-template-columns: 4rem minmax(14rem, 1fr) 2fr 12rem; align-items: baseline; gap: 2rem; padding: 1.55rem 1.2rem; }
+      .rk-sched__row .n { grid-row: auto; padding: 0; }
+      .rk-sched__row .go { grid-column: auto; justify-content: flex-end; margin: 0; }
+    }
+
+    /* Work gallery */
+    .rk-work { background: var(--paper); border-block: 1px solid var(--line); }
+    .rk-gal { display: grid; gap: .9rem; grid-template-columns: 1fr 1fr; grid-auto-rows: 15rem; }
+    .rk-gal figure { position: relative; overflow: hidden; border-radius: .3rem; background: #d9d2c6; }
+    .rk-gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+    .rk-gal figure:hover img { transform: scale(1.045); }
+    .rk-gal figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,20,30,.72), transparent 48%); }
+    .rk-gal figcaption { position: absolute; z-index: 1; left: 1rem; right: 1rem; bottom: .95rem; color: var(--cream); }
+    .rk-gal figcaption b { display: block; font-family: Fraunces, serif; font-weight: 500; font-size: 1.2rem; letter-spacing: -.01em; }
+    .rk-gal figcaption .rk-mono { color: rgba(247,244,239,.8); font-size: .58rem; }
+    .rk-gal .wide { grid-column: span 2; }
+    .rk-gal .tall { grid-row: span 2; }
+    @media (min-width: 900px) {
+      .rk-gal { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 17rem; gap: 1.1rem; }
+      .rk-gal .wide { grid-column: span 2; }
+    }
+
+    /* Process */
+    .rk-proc { background: var(--ink); color: var(--cream); position: relative; overflow: hidden; }
+    .rk-proc::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(247,244,239,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(247,244,239,.04) 1px, transparent 1px); background-size: 24px 24px; }
+    .rk-proc .rk-label { color: var(--clay); }
+    .rk-proc .rk-sec__head p { color: rgba(247,244,239,.68); }
+    .rk-steps { position: relative; display: grid; gap: 2.2rem; }
+    @media (min-width: 900px) { .rk-steps { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+    .rk-step { position: relative; padding-top: 1.4rem; border-top: 1px solid rgba(247,244,239,.2); }
+    .rk-step::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: var(--clay); }
+    .rk-step .num { font-family: Fraunces, serif; font-size: 4.6rem; line-height: 1; letter-spacing: -.05em; color: transparent; -webkit-text-stroke: 1px rgba(247,244,239,.42); }
+    .rk-step:last-child .num { -webkit-text-stroke-color: var(--clay); }
+    .rk-step h3 { margin-top: 1rem; font-family: Fraunces, serif; font-size: 1.4rem; font-weight: 450; }
+    .rk-step p { margin-top: .6rem; font-size: .94rem; line-height: 1.65; color: rgba(247,244,239,.68); }
+
+    /* Guides wrapper (cards injected by publish_due.py keep their Tailwind classes) */
+    .rk-guides .rk-sec__head a { justify-self: start; }
+    @media (min-width: 900px) { .rk-guides .rk-sec__head a { justify-self: end; } }
+
+    /* Contact / work order */
+    .rk-contact { position: relative; }
+    .rk-contact__grid { display: grid; gap: 3rem; align-items: start; }
+    @media (min-width: 1024px) { .rk-contact__grid { grid-template-columns: .9fr 1.1fr; gap: 5rem; } }
+    .rk-direct { margin-top: 2.2rem; border-top: 1px solid var(--line); }
+    .rk-direct a, .rk-direct div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); font-weight: 600; }
+    .rk-direct a:hover { color: var(--clay-deep); }
+    .rk-direct .rk-mono { color: var(--muted); font-weight: 400; }
+    .rk-form { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: .35rem; padding: clamp(1.4rem, 4vw, 2.4rem); box-shadow: 0 30px 50px -36px rgba(21,35,59,.35); }
+    .rk-form__head { display: flex; justify-content: space-between; color: var(--muted); padding-bottom: 1rem; margin-bottom: 1.4rem; border-bottom: 1.5px solid var(--ink); }
+    .rk-field label { display: flex; gap: .7rem; color: var(--muted); }
+    .rk-field label b { color: var(--clay-deep); font-weight: 500; }
+    .rk-field input, .rk-field textarea { margin-top: .5rem; width: 100%; background: transparent; border: 0; border-bottom: 1.5px solid var(--line); padding: .6rem 0 .75rem; font-size: 1.05rem; color: var(--ink); outline: none; transition: border-color .2s; border-radius: 0; }
+    .rk-field textarea { resize: none; }
+    .rk-field input::placeholder, .rk-field textarea::placeholder { color: rgba(91,100,114,.55); }
+    .rk-field input:focus, .rk-field textarea:focus { border-bottom-color: var(--clay); }
+    .rk-fields { display: grid; gap: 1.6rem; }
+    @media (min-width: 640px) { .rk-fields--2 { grid-template-columns: 1fr 1fr; } }
+    .rk-form button[disabled] { opacity: .6; cursor: not-allowed; }
+    .rk-form__note { margin-top: 1rem; font-size: .82rem; color: var(--muted); }
+
+    /* Footer */
+    .rk-foot { background: var(--ink); color: rgba(247,244,239,.7); padding-top: 4.5rem; overflow: hidden; }
+    .rk-foot__grid { display: grid; gap: 2.2rem; grid-template-columns: 1fr 1fr; font-size: .9rem; }
+    @media (max-width: 899px) { .rk-foot__grid > :first-child { grid-column: span 2; } }
+    @media (min-width: 900px) { .rk-foot__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+    .rk-foot h4 { color: var(--clay); margin-bottom: 1rem; }
+    .rk-foot li { margin-bottom: .55rem; }
+    .rk-foot a:hover { color: var(--cream); }
+    .rk-foot__word { margin-top: 3.5rem; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(5rem, 21vw, 17rem); line-height: .78; letter-spacing: -.06em; color: rgba(247,244,239,.07); white-space: nowrap; user-select: none; }
+    .rk-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem; padding: 1.3rem 0 1.6rem; border-top: 1px solid rgba(247,244,239,.12); font-size: .8rem; }
+
+    /* WhatsApp float */
+    .rk-wa { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 10px 28px -6px rgba(37,211,102,.55); transition: transform .2s; }
+    .rk-wa:hover { transform: scale(1.08); }
+    .rk-wa svg { width: 1.75rem; height: 1.75rem; }
+
+    /* Motion */
+    @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes settle { to { transform: scale(1); } }
+    @keyframes drop { from { opacity: 0; transform: translateY(-18px) rotate(-6deg); } to { opacity: 1; transform: rotate(-2.2deg); } }
+    @keyframes stamp { from { opacity: 0; transform: scale(1.8) rotate(0); } to { opacity: .92; transform: scale(1) rotate(14deg); } }
+    .rk-in > * { animation: rise .9s var(--ease) both; }
+    .rk-in > :nth-child(2) { animation-delay: .08s; } .rk-in > :nth-child(3) { animation-delay: .16s; }
+    .rk-in > :nth-child(4) { animation-delay: .24s; } .rk-in > :nth-child(5) { animation-delay: .32s; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
-    [data-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease-spring), transform .7s var(--ease-spring); }
-    [data-stagger].in > * { opacity: 1; transform: none; }
-    [data-stagger].in > *:nth-child(1) { transition-delay: .05s; }
-    [data-stagger].in > *:nth-child(2) { transition-delay: .13s; }
-    [data-stagger].in > *:nth-child(3) { transition-delay: .21s; }
-    [data-stagger].in > *:nth-child(4) { transition-delay: .29s; }
-    [data-stagger].in > *:nth-child(5) { transition-delay: .37s; }
-    [data-stagger].in > *:nth-child(6) { transition-delay: .45s; }
-
-    .underline-grow { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1.5px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .35s var(--ease-spring); }
-    .underline-grow:hover { background-size: 100% 1.5px; }
-
-    .card-shadow { box-shadow: 0 1px 2px rgba(21,35,59,.04), 0 12px 30px -18px rgba(21,35,59,.18); }
-    .cta-shadow { box-shadow: 0 8px 24px -10px rgba(194,106,60,.6); }
-
-    .img-treat { position: relative; }
-    .img-treat::after { content:""; position:absolute; inset:0; background: linear-gradient(to top, rgba(15,20,30,.82), rgba(15,20,30,.25) 42%, transparent 68%); }
-    figure figcaption { text-shadow: 0 1px 8px rgba(10,14,22,.55); }
-
     @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      .reveal, [data-stagger] > * { opacity: 1 !important; transform: none !important; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .rk-h1 .clean path { stroke-dashoffset: 0; }
+      .rk-drawing__photo img { transform: none; }
+      .rk-sheet { transform: rotate(-2.2deg); } .rk-stamp { opacity: .92; }
       html { scroll-behavior: auto; }
     }
   </style>
   <script src="assets/analytics.js" defer></script>
 </head>
 
-<body class="grain font-sans text-ink antialiased selection:bg-clay/20 selection:text-ink">
+<body class="font-sans antialiased selection:bg-clay/20 selection:text-ink">
 
-  <!-- ░░ FLOATING WHATSAPP ░░ -->
-  <a href="https://wa.me/6586115854" target="_blank" rel="noopener" aria-label="Chat with RK E&amp;C on WhatsApp"
-     class="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] cursor-pointer"
-     style="box-shadow:0 10px 28px -6px rgba(37,211,102,.55)">
-    <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40 motion-safe:animate-ping"></span>
-    <svg viewBox="0 0 24 24" class="relative h-7 w-7" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.886 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.582 0 11.94-5.359 11.943-11.893a11.821 11.821 0 00-3.416-8.452z"/></svg>
-    <span class="sr-only">WhatsApp</span>
+  <a href="https://wa.me/6586115854" target="_blank" rel="noopener" aria-label="Chat with RK E&amp;C on WhatsApp" class="rk-wa">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.886 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.582 0 11.94-5.359 11.943-11.893a11.821 11.821 0 00-3.416-8.452z"/></svg>
   </a>
 
-  <!-- ░░ NAVBAR ░░ -->
-  <header class="fixed top-4 left-4 right-4 z-50">
-    <nav class="mx-auto max-w-content flex items-center justify-between rounded-2xl border border-line/80 bg-paper/80 px-5 py-3 backdrop-blur-md card-shadow">
-      <a href="#top" class="flex items-center gap-2.5 cursor-pointer">
-        <span class="grid h-9 w-9 place-items-center rounded-xl bg-ink text-cream font-display font-semibold tracking-tight">RK</span>
-        <span class="font-display text-lg font-semibold tracking-tight leading-none">RK&nbsp;E&amp;C<span class="hidden sm:inline text-muted font-sans text-xs font-medium align-middle">&nbsp;· Pte Ltd</span></span>
+  <!-- NAV -->
+  <header class="rk-nav">
+    <nav class="rk-wrap rk-nav__in" aria-label="Main">
+      <a href="#top" class="rk-logo">
+        <span class="rk-logo__mark">RK</span>
+        <span class="rk-logo__name">RK E&amp;C<small>PTE LTD · SINGAPORE</small></span>
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
-        <a href="#services" class="underline-grow hover:text-ink transition-colors duration-200 cursor-pointer">Services</a>
-        <a href="/handyman-singapore/" class="underline-grow hover:text-ink transition-colors duration-200 cursor-pointer">Handyman</a>
-        <a href="#work" class="underline-grow hover:text-ink transition-colors duration-200 cursor-pointer">Our Work</a>
-        <a href="#process" class="underline-grow hover:text-ink transition-colors duration-200 cursor-pointer">How We Work</a>
-        <a href="#guides" class="underline-grow hover:text-ink transition-colors duration-200 cursor-pointer">Guides</a>
-        <a href="#contact" class="underline-grow hover:text-ink transition-colors duration-200 cursor-pointer">Contact</a>
+      <div class="rk-nav__links">
+        <a href="#services">Services</a>
+        <a href="#prices">Prices</a>
+        <a href="#work">Our Work</a>
+        <a href="#process">How We Work</a>
+        <a href="#guides">Guides</a>
+        <a href="#contact">Contact</a>
       </div>
-      <a href="https://wa.me/6586115854" target="_blank" rel="noopener" class="rounded-xl bg-clay px-4 py-2.5 text-sm font-semibold text-cream cta-shadow transition-all duration-200 hover:bg-clay-deep hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay cursor-pointer">
-        Get a quote
-      </a>
+      <a href="https://wa.me/6586115854" target="_blank" rel="noopener" class="rk-btn rk-btn--clay">Get a quote</a>
     </nav>
   </header>
 
-  <main id="top" class="relative z-10">
+  <main id="top">
 
-    <!-- ░░ HERO ░░ -->
-    <section class="aura relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-28">
-      <div class="mx-auto max-w-content px-6">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-6" data-stagger>
-            <span class="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-muted">
-              <span class="h-1.5 w-1.5 rounded-full bg-clay"></span>
-              HDB Renovation &amp; Handyman · Singapore
-            </span>
-            <h1 class="mt-6 font-display text-5xl sm:text-6xl lg:text-[4.2rem] font-medium leading-[0.98] tracking-[-0.02em] text-balance">
-              Built right.<br>Finished
-              <span class="italic text-clay">clean</span>.
-            </h1>
-            <p class="mt-7 max-w-xl text-lg leading-[1.7] text-muted">
-              RK E&amp;C is your one team for the HDB home: full renovation, handyman repairs, move-in / move-out cleaning, fixture fixing and Taobao furniture assembly. Fixed-price quote, no surprises.
-            </p>
-            <div class="mt-9 flex flex-wrap items-center gap-4">
-              <a href="#contact" class="rounded-xl bg-clay px-6 py-3.5 text-base font-semibold text-cream cta-shadow transition-all duration-200 hover:bg-clay-deep hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay cursor-pointer">
-                Get a free quote
-              </a>
-              <a href="#work" class="group inline-flex items-center gap-2 rounded-xl border border-line bg-paper px-6 py-3.5 text-base font-semibold text-ink transition-all duration-200 hover:border-ink/30 hover:-translate-y-0.5 cursor-pointer">
-                See our work
-                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-            </div>
-            <div class="mt-8 flex items-center gap-3 text-sm text-muted">
-              <svg class="h-5 w-5 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-              <span>Talk to <span class="font-semibold text-ink">+65 8611 5854</span>. Free site visit, island-wide.</span>
-            </div>
+    <!-- HERO -->
+    <section class="rk-hero">
+      <div class="rk-wrap rk-hero__grid">
+        <div class="rk-in">
+          <div class="rk-hero__meta rk-mono">
+            <span>Taking jobs island-wide</span>
+            <span>HDB &amp; condo</span>
+            <span>UEN 202442767D</span>
+          </div>
+          <h1 class="rk-h1 text-balance">Built right.<br>Finished <span class="clean">clean<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 70 4, 150 3, 297 10" fill="none" stroke="#C26A3C" stroke-width="3.5" stroke-linecap="round"/></svg></span>.</h1>
+          <p class="rk-lede">One in-house crew for the whole HDB home: <strong>renovation, handyman repairs, move-in and move-out cleaning, fixtures and Taobao assembly.</strong> We visit, measure, and give you a fixed, itemised price before any work starts.</p>
+          <div class="rk-hero__cta">
+            <a href="#contact" class="rk-btn rk-btn--clay">Book a free site visit
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#work" class="rk-btn rk-btn--line">See our work</a>
+          </div>
+          <p class="rk-hero__call">Rather talk? Call or WhatsApp <a href="https://wa.me/6586115854" target="_blank" rel="noopener">+65 8611 5854</a></p>
+        </div>
+
+        <div class="rk-drawing">
+          <div class="rk-dim rk-dim--top rk-mono" aria-hidden="true"><span>Handover · real job</span></div>
+          <div class="rk-dim rk-dim--side rk-mono" aria-hidden="true"><span>Herringbone · cove light</span></div>
+          <div class="rk-drawing__photo">
+            <img src="assets/projects/hdb-living.jpg" alt="HDB room renovated by RK E&amp;C with herringbone vinyl flooring, cove lighting, downlights and timber door frames" width="2048" height="1536" loading="eager" fetchpriority="high">
+            <span class="rk-drawing__tag rk-mono">RK E&amp;C · completed</span>
           </div>
 
-          <!-- Hero feature image -->
-          <div class="lg:col-span-6 reveal">
-            <div class="relative">
-              <div class="img-treat overflow-hidden rounded-3xl border border-line card-shadow">
-                <img src="assets/projects/hdb-study.jpg" alt="Renovated HDB home study by RK E&C with herringbone flooring, glass partition and marble counter in Bukit Panjang" class="h-[26rem] w-full object-cover" width="1512" height="700" loading="eager">
-              </div>
-              <div class="absolute bottom-4 left-4 z-10 rounded-xl bg-paper/90 px-4 py-2.5 backdrop-blur-sm card-shadow">
-                <p class="font-display text-sm font-semibold text-ink">HDB renovation · Bukit Panjang</p>
-                <p class="text-xs text-muted">Herringbone flooring · glass partition · finishes</p>
-              </div>
-              <div class="absolute -top-3 -right-3 z-10 rounded-full bg-ink px-3.5 py-1.5 text-xs font-semibold text-cream">UEN 202442767D</div>
-            </div>
+          <div class="rk-sheet" aria-label="How every RK E&amp;C job is quoted">
+            <div class="rk-sheet__head rk-mono"><span>Quote sheet</span><span>Every job</span></div>
+            <div class="rk-sheet__row"><b>Site visit</b><i></i><span>FREE</span></div>
+            <div class="rk-sheet__row"><b>Quotation</b><i></i><span>FIXED, ITEMISED</span></div>
+            <div class="rk-sheet__row"><b>Crew</b><i></i><span>IN-HOUSE</span></div>
+            <div class="rk-sheet__row"><b>Handover</b><i></i><span>SITE CLEARED</span></div>
+            <p class="rk-sheet__foot rk-mono">No surprises on the final bill</p>
+            <svg class="rk-stamp" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs>
+              <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="50" cy="50" r="29" fill="none" stroke="currentColor" stroke-width="1"/>
+              <text><textPath href="#ring">FIXED PRICE · FREE SITE VISIT · RK E&amp;C · </textPath></text>
+              <text x="50" y="55" text-anchor="middle" style="font-family:Fraunces,serif;font-size:17px;letter-spacing:0;font-weight:600">RK</text>
+            </svg>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ░░ TRUST STRIP ░░ -->
-    <section class="border-y border-line bg-paper">
-      <div class="mx-auto max-w-content px-6 py-10">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6" data-stagger>
-          <div class="flex items-start gap-3">
-            <svg class="mt-0.5 h-6 w-6 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div><p class="font-semibold text-ink">Free site visit</p><p class="text-sm text-muted">We measure &amp; advise on-site</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <svg class="mt-0.5 h-6 w-6 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            <div><p class="font-semibold text-ink">Fixed-price quote</p><p class="text-sm text-muted">Itemised, no hidden cost</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <svg class="mt-0.5 h-6 w-6 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <div><p class="font-semibold text-ink">In-house crew</p><p class="text-sm text-muted">Not sub-contracted out</p></div>
-          </div>
-          <div class="flex items-start gap-3">
-            <svg class="mt-0.5 h-6 w-6 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
-            <div><p class="font-semibold text-ink">HDB &amp; condo homes</p><p class="text-sm text-muted">Our specialty, island-wide</p></div>
-          </div>
-        </div>
+    <!-- PRICE RAIL -->
+    <section id="prices" class="rk-rail" aria-label="Starting prices">
+      <div class="rk-wrap rk-rail__grid">
+        <a href="/handyman-singapore/">
+          <p class="k rk-mono">Handyman</p>
+          <p class="v"><small>from</small>$50</p>
+          <p class="u">per item, mounting, fixes, repairs</p>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="/painting-services-singapore/">
+          <p class="k rk-mono">Painting</p>
+          <p class="v"><small>from</small>$450</p>
+          <p class="u">whole-flat repaint, rooms from $120</p>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="/move-out-cleaning-singapore/">
+          <p class="k rk-mono">Move-out cleaning</p>
+          <p class="v"><small>from</small>$480</p>
+          <p class="u">deep clean, ready for handover</p>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="#contact">
+          <p class="k rk-mono">Renovation</p>
+          <p class="v">Itemised</p>
+          <p class="u">fixed quote after a free site visit</p>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
       </div>
     </section>
 
-    <!-- ░░ SERVICES ░░ -->
-    <section id="services" class="py-24 sm:py-28">
-      <div class="mx-auto max-w-content px-6">
-        <div class="max-w-2xl reveal">
-          <span class="text-xs font-semibold uppercase tracking-widest text-clay">What we do</span>
-          <h2 class="mt-4 font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-[1.05] text-balance">
-            One contractor for the whole job.
-          </h2>
-          <p class="mt-5 text-lg leading-[1.7] text-muted">From stripping the old floor to the final coat of paint, you deal with one team, start to finish.</p>
-        </div>
-
-        <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
-          <!-- Home Renovation -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">HDB Renovation</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Flooring, walls &amp; ceilings, waterproofing, tiling and paint: full or partial reno for your HDB flat or condo, done by one team.</p>
-          </article>
-          <!-- Flooring -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 8h18M3 13h18M3 18h18M8 3v5M14 8v5M8 13v5"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Flooring</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Vinyl, laminate, herringbone, SPC and tile flooring: removal of old floor, sub-floor levelling, and supply &amp; install.</p>
-          </article>
-          <!-- Handyman -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L3 18v3h3l6.1-6.1a4 4 0 0 0 5.6-5.6l-2.5 2.5-2-2 2.5-2.5z"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Handyman</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">The small jobs that pile up: patching, drilling, mounting, silicone, door &amp; hinge fixes, leaks and odd repairs around the home.</p>
-            <a href="/handyman-singapore/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-ink group-hover:text-clay transition-colors duration-200 cursor-pointer">Handyman services &amp; prices
-              <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </article>
-          <!-- Move-in / Move-out Cleaning -->
-          <article class="group rounded-3xl border border-clay/30 bg-ink p-8 card-shadow transition-all duration-300 hover:-translate-y-1">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-clay text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 11V9a2 2 0 0 0-2-2h-1l-1-3H9L8 7H7a2 2 0 0 0-2 2v2"/><path d="M5 11h14l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight text-cream">Move-In / Move-Out Cleaning</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-cream/70">Deep clean before you move in or hand back keys: floors, toilets, kitchen, windows and grilles, scrubbed and ready for inspection.</p>
-            <a href="/move-out-cleaning-singapore/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-cream hover:text-clay transition-colors duration-200 cursor-pointer">Move-out packages &amp; prices
-              <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </article>
-          <!-- Fixture Fixing -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Fixture Fixing</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Lights, fans, aircon trunking, taps, sinks, toilet bowls, curtain rails and TV brackets, supplied or yours, mounted and tested.</p>
-          </article>
-          <!-- Taobao Assembly -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Taobao Goods Assembly</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Flat-pack wardrobes, shelves, beds and imported Taobao furniture: unpacked, assembled, levelled and anchored to the wall safely.</p>
-          </article>
-          <!-- Painting & Tiling -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v6h18V5a2 2 0 0 0-2-2z"/><path d="M3 11v2a2 2 0 0 0 2 2h7v3a2 2 0 0 0 2 2 2 2 0 0 0 2-2v-3a2 2 0 0 0 2-2v-2"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Painting &amp; Tiling</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Full repaint, touch-ups and feature walls, plus floor &amp; wall tiling and marble: proper prep, clean lines, level grout.</p>
-            <a href="/painting-services-singapore/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-ink group-hover:text-clay transition-colors duration-200 cursor-pointer">Painting services &amp; prices
-              <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </article>
-          <!-- Ceiling & Drywall -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18"/><path d="M4 4v4h16V4"/><path d="M8 8v12M16 8v12M8 14h8"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Ceiling &amp; Drywall</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">False ceilings, cove and L-box lighting, partition walls and drywall: built, taped, skimmed and ready for paint.</p>
-          </article>
-          <!-- Plumbing -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6a3 3 0 0 0 3 3 3 3 0 0 0 3-3V3"/><path d="M12 12v6a3 3 0 0 0 3 3h3"/><path d="M7 3h4M13 3h4"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Plumbing</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Taps, sinks, basins, toilet bowls, water heaters and concealed pipework: supply, replace, re-route and fix leaks.</p>
-          </article>
-          <!-- Demolition / Hacking -->
-          <article class="group rounded-3xl border border-line bg-paper p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-cream">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3l7 7-3 3-7-7z"/><path d="M11 6 3 14v7h7l8-8"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-2xl font-medium tracking-tight">Demolition &amp; Hacking</h3>
-            <p class="mt-3 text-[15px] leading-[1.7] text-muted">Hacking of walls, floors and old fittings, plus full strip-out, with debris cleared and disposed, ready for the new build.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ░░ OUR WORK / GALLERY ░░ -->
-    <section id="work" class="border-y border-line bg-paper py-24 sm:py-28">
-      <div class="mx-auto max-w-content px-6">
-        <div class="flex flex-wrap items-end justify-between gap-6 reveal">
-          <div class="max-w-2xl">
-            <span class="text-xs font-semibold uppercase tracking-widest text-clay">Recent work</span>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-[1.05] text-balance">Projects across the island.</h2>
+    <!-- SERVICES: SCHEDULE OF WORKS -->
+    <section id="services" class="rk-sec">
+      <div class="rk-wrap">
+        <div class="rk-sec__head reveal">
+          <div>
+            <p class="rk-label rk-mono">Schedule of works</p>
+            <h2 class="rk-h2 mt-5 text-balance">One contractor for <em>the whole job.</em></h2>
           </div>
-          <p class="text-sm font-medium text-muted">Bukit Panjang · Geylang · King George · Reflection · One-North</p>
+          <p>From stripping the old floor to the last coat of paint, you deal with one team and one number. Pick a trade, or hand us the whole list.</p>
         </div>
 
-        <div class="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" data-stagger>
-          <figure class="img-treat group relative overflow-hidden rounded-2xl border border-line card-shadow aspect-[4/3]">
-            <img src="assets/projects/herringbone-flooring.jpg" alt="Herringbone vinyl flooring installation in progress by RK E&C, Bukit Panjang" class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <figcaption class="absolute bottom-4 left-4 z-10 text-cream"><p class="font-display text-lg font-semibold">Herringbone flooring</p><p class="text-xs text-cream/85">Bukit Panjang · supply &amp; install</p></figcaption>
-          </figure>
-          <figure class="img-treat group relative overflow-hidden rounded-2xl border border-line card-shadow aspect-[4/3]">
-            <img src="assets/projects/carpentry-doors.jpg" alt="Flush door and skirting installed by RK E&C in a renovated HDB flat, King George" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <figcaption class="absolute bottom-4 left-4 z-10 text-cream"><p class="font-display font-semibold">Doors &amp; carpentry</p><p class="text-xs text-cream/85">King George</p></figcaption>
-          </figure>
-          <figure class="img-treat group relative overflow-hidden rounded-2xl border border-line card-shadow aspect-[4/3]">
-            <img src="assets/projects/marble-bathroom.jpg" alt="Marble tiled bathroom wall finished by RK E&C, Reflection" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <figcaption class="absolute bottom-4 left-4 z-10 text-cream"><p class="font-display font-semibold">Bathroom tiling</p><p class="text-xs text-cream/85">Reflection</p></figcaption>
-          </figure>
-          <figure class="img-treat group relative overflow-hidden rounded-2xl border border-line card-shadow aspect-[4/3]">
-            <img src="assets/projects/bedroom-reno.jpg" alt="Renovated bedroom with new laminate flooring and repainted walls by RK E&C, Geylang" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <figcaption class="absolute bottom-4 left-4 z-10 text-cream"><p class="font-display font-semibold">Bedroom renovation</p><p class="text-xs text-cream/85">Geylang</p></figcaption>
-          </figure>
-          <figure class="img-treat group relative overflow-hidden rounded-2xl border border-line card-shadow aspect-[4/3]">
-            <img src="assets/projects/vinyl-flooring.jpg" alt="New vinyl plank flooring and fresh paint by RK E&C, King George" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <figcaption class="absolute bottom-4 left-4 z-10 text-cream"><p class="font-display font-semibold">Flooring &amp; repaint</p><p class="text-xs text-cream/85">King George</p></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ░░ PROCESS ░░ -->
-    <section id="process" class="py-24 sm:py-28">
-      <div class="mx-auto max-w-content px-6">
-        <div class="grid lg:grid-cols-12 gap-12">
-          <div class="lg:col-span-4 reveal">
-            <span class="text-xs font-semibold uppercase tracking-widest text-clay">How we work</span>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-[1.05] text-balance">Simple, from quote to keys.</h2>
-            <p class="mt-5 text-lg leading-[1.7] text-muted">You always know the price, the plan, and where we are.</p>
+        <div class="rk-sched reveal">
+          <div class="rk-sched__row">
+            <span class="n rk-mono">01</span><h3>HDB Renovation</h3>
+            <p>Flooring, walls and ceilings, waterproofing, tiling and paint. Full or partial reno for HDB flats and condos, done by one team.</p>
+            <span class="go quiet">Quoted on site</span>
           </div>
-          <div class="lg:col-span-8 lg:pl-8" data-stagger>
-            <ol class="relative border-l border-line">
-              <li class="relative pl-10 pb-10">
-                <span class="absolute -left-[13px] grid h-6 w-6 place-items-center rounded-full bg-ink text-[11px] font-bold text-cream">1</span>
-                <h3 class="font-display text-xl font-medium">Free site visit</h3>
-                <p class="mt-2 text-[15px] leading-[1.7] text-muted">We come down, measure up, and understand exactly what the space needs.</p>
-              </li>
-              <li class="relative pl-10 pb-10">
-                <span class="absolute -left-[13px] grid h-6 w-6 place-items-center rounded-full bg-ink text-[11px] font-bold text-cream">2</span>
-                <h3 class="font-display text-xl font-medium">Fixed-price quote</h3>
-                <p class="mt-2 text-[15px] leading-[1.7] text-muted">An itemised quote with scope spelled out, so you approve before any work begins.</p>
-              </li>
-              <li class="relative pl-10 pb-10">
-                <span class="absolute -left-[13px] grid h-6 w-6 place-items-center rounded-full bg-ink text-[11px] font-bold text-cream">3</span>
-                <h3 class="font-display text-xl font-medium">Build &amp; finish</h3>
-                <p class="mt-2 text-[15px] leading-[1.7] text-muted">Our own crew does the work (flooring, walls, waterproofing, paint) with updates as we go.</p>
-              </li>
-              <li class="relative pl-10">
-                <span class="absolute -left-[13px] grid h-6 w-6 place-items-center rounded-full bg-clay text-[11px] font-bold text-cream">4</span>
-                <h3 class="font-display text-xl font-medium">Clean handover</h3>
-                <p class="mt-2 text-[15px] leading-[1.7] text-muted">We check for defects, clear the site, and hand back a space that's ready to use.</p>
-              </li>
-            </ol>
+          <div class="rk-sched__row">
+            <span class="n rk-mono">02</span><h3>Flooring</h3>
+            <p>Vinyl, laminate, herringbone, SPC and tile. Old floor removed, sub-floor levelled, supplied and installed.</p>
+            <span class="go quiet">Quoted on site</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ░░ GUIDES / ARTICLES ░░ -->
-    <section id="guides" class="border-y border-line bg-paper py-24 sm:py-28">
-      <div class="mx-auto max-w-content px-6">
-        <div class="flex flex-wrap items-end justify-between gap-6 reveal">
-          <div class="max-w-2xl">
-            <span class="text-xs font-semibold uppercase tracking-widest text-clay">Guides</span>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-[1.05] text-balance">HDB renovation &amp; home tips.</h2>
-            <p class="mt-5 text-lg leading-[1.7] text-muted">Straight-talking advice for Singapore homeowners: planning a reno, prepping for handover, and keeping your flat in shape.</p>
+          <a href="/handyman-singapore/" class="rk-sched__row">
+            <span class="n rk-mono">03</span><h3>Handyman</h3>
+            <p>The small jobs that pile up: patching, drilling, mounting, silicone, door and hinge fixes, leaks and odd repairs.</p>
+            <span class="go"><span class="price">FROM $50</span>Prices<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a href="/move-out-cleaning-singapore/" class="rk-sched__row">
+            <span class="n rk-mono">04</span><h3>Move-in / Move-out Cleaning</h3>
+            <p>Deep clean before you move in or hand back keys: floors, toilets, kitchen, windows and grilles, ready for inspection.</p>
+            <span class="go"><span class="price">FROM $480</span>Packages<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a href="/painting-services-singapore/" class="rk-sched__row">
+            <span class="n rk-mono">05</span><h3>Painting &amp; Tiling</h3>
+            <p>Full repaints, touch-ups and feature walls, plus floor and wall tiling and marble. Proper prep, clean lines, level grout.</p>
+            <span class="go"><span class="price">FROM $450</span>Prices<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a href="/water-heater-installation-singapore/" class="rk-sched__row">
+            <span class="n rk-mono">06</span><h3>Plumbing &amp; Water Heaters</h3>
+            <p>Taps, sinks, basins, toilet bowls, water heaters and concealed pipework. Supply, replace, re-route and fix leaks.</p>
+            <span class="go">Water heaters<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <div class="rk-sched__row">
+            <span class="n rk-mono">07</span><h3>Fixture Fixing</h3>
+            <p>Lights, fans, aircon trunking, curtain rails and TV brackets, supplied or yours, mounted and tested.</p>
+            <span class="go quiet">Per item</span>
           </div>
-          <a href="guides/" class="hidden sm:inline-flex items-center gap-2 rounded-xl border border-line bg-cream/40 px-5 py-3 text-sm font-semibold text-ink transition-all duration-200 hover:border-ink/30 hover:-translate-y-0.5 cursor-pointer">All articles
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="rk-sched__row">
+            <span class="n rk-mono">08</span><h3>Ceiling &amp; Drywall</h3>
+            <p>False ceilings, cove and L-box lighting, partition walls and drywall: built, taped, skimmed and ready for paint.</p>
+            <span class="go quiet">Quoted on site</span>
+          </div>
+          <div class="rk-sched__row">
+            <span class="n rk-mono">09</span><h3>Taobao Goods Assembly</h3>
+            <p>Flat-pack wardrobes, shelves, beds and imported Taobao furniture: assembled, levelled and anchored to the wall.</p>
+            <span class="go quiet">Per item</span>
+          </div>
+          <div class="rk-sched__row">
+            <span class="n rk-mono">10</span><h3>Demolition &amp; Hacking</h3>
+            <p>Hacking of walls, floors and old fittings, or a full strip-out, with debris cleared and disposed of.</p>
+            <span class="go quiet">Quoted on site</span>
+          </div>
+          <a href="/termite-treatment-singapore/" class="rk-sched__row">
+            <span class="n rk-mono">11</span><h3>Termite Treatment</h3>
+            <p>Treatment for active termites, then repair of the damaged door frames, skirting and carpentry once the colony is dealt with.</p>
+            <span class="go">Treatment &amp; repair<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </div>
+      </div>
+    </section>
 
-        <div class="mt-12 grid md:grid-cols-3 gap-6" data-stagger>
+    <!-- WORK -->
+    <section id="work" class="rk-sec rk-work">
+      <div class="rk-wrap">
+        <div class="rk-sec__head reveal">
+          <div>
+            <p class="rk-label rk-mono">Site photos</p>
+            <h2 class="rk-h2 mt-5 text-balance">Real jobs, <em>across the island.</em></h2>
+          </div>
+          <p>Photos from our own projects, taken on site. Bukit Panjang, Geylang, King George's, Reflections and One-North.</p>
+        </div>
+        <div class="rk-gal reveal">
+          <figure class="wide">
+            <img src="assets/projects/hdb-study.jpg" alt="Renovated HDB home study by RK E&amp;C with herringbone flooring, glass partition and marble counter in Bukit Panjang" style="object-position:50% 55%" loading="lazy" width="2040" height="924">
+            <figcaption><span class="rk-mono">Bukit Panjang · full reno</span><b>Glass-partition study</b></figcaption>
+          </figure>
+          <figure class="tall">
+            <img src="assets/projects/herringbone-flooring.jpg" alt="Herringbone vinyl flooring installation in progress by RK E&amp;C, Bukit Panjang" loading="lazy" width="924" height="2040">
+            <figcaption><span class="rk-mono">Bukit Panjang · mid-install</span><b>Herringbone flooring</b></figcaption>
+          </figure>
+          <figure class="tall">
+            <img src="assets/projects/marble-bathroom.jpg" alt="Marble tiled bathroom wall finished by RK E&amp;C, Reflection" loading="lazy" width="924" height="2040">
+            <figcaption><span class="rk-mono">Reflections</span><b>Bathroom tiling</b></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/projects/bedroom-reno.jpg" alt="Renovated bedroom with new laminate flooring and repainted walls by RK E&amp;C, Geylang" style="object-position:50% 60%" loading="lazy" width="924" height="2040">
+            <figcaption><span class="rk-mono">Geylang</span><b>Bedroom renovation</b></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/projects/carpentry-doors.jpg" alt="Flush door and skirting installed by RK E&amp;C in a renovated HDB flat, King George" style="object-position:50% 45%" loading="lazy" width="924" height="2040">
+            <figcaption><span class="rk-mono">King George's</span><b>Doors &amp; carpentry</b></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="rk-sec rk-proc">
+      <div class="rk-wrap" style="position:relative">
+        <div class="rk-sec__head reveal">
+          <div>
+            <p class="rk-label rk-mono">How we work</p>
+            <h2 class="rk-h2 mt-5 text-balance">Simple, from quote <em>to keys.</em></h2>
+          </div>
+          <p>You always know the price, the plan, and where we are. Updates come by WhatsApp, with photos.</p>
+        </div>
+        <ol class="rk-steps reveal">
+          <li class="rk-step"><span class="num">01</span><h3>Free site visit</h3><p>We come down, measure up, and see exactly what the space needs.</p></li>
+          <li class="rk-step"><span class="num">02</span><h3>Fixed-price quote</h3><p>An itemised quote with the scope spelled out. You approve before any work begins.</p></li>
+          <li class="rk-step"><span class="num">03</span><h3>Build &amp; finish</h3><p>Our own crew does the work, flooring to paint, with progress updates as we go.</p></li>
+          <li class="rk-step"><span class="num">04</span><h3>Clean handover</h3><p>We check for defects, clear the site, and hand back a space that is ready to use.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- GUIDES -->
+    <section id="guides" class="rk-sec rk-guides">
+      <div class="rk-wrap">
+        <div class="rk-sec__head reveal">
+          <div>
+            <p class="rk-label rk-mono">Guides</p>
+            <h2 class="rk-h2 mt-5 text-balance">Prices and tips, <em>from real invoices.</em></h2>
+          </div>
+          <a href="guides/" class="rk-btn rk-btn--line">All guides
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 reveal">
           <!--HOME-GUIDES:START-->
           <a href="guides/shower-screen-installation-cost-singapore/" class="group block rounded-3xl border border-line bg-cream/40 p-8 card-shadow transition-all duration-300 hover:-translate-y-1 hover:border-clay/40 cursor-pointer">
             <span class="text-xs font-semibold uppercase tracking-widest text-clay">Glass</span>
@@ -425,97 +558,102 @@
           </a>
           <!--HOME-GUIDES:END-->
         </div>
-        <p class="mt-6 text-sm text-muted">More guides on the way. <a href="guides/" class="font-semibold text-clay-deep underline cursor-pointer">Browse all articles →</a></p>
       </div>
     </section>
 
-    <!-- ░░ CONTACT ░░ -->
-    <section id="contact" class="aura border-t border-line py-24 sm:py-28">
-      <div class="mx-auto max-w-content px-6">
-        <div class="grid lg:grid-cols-12 gap-12 items-start">
-          <div class="lg:col-span-5 reveal">
-            <span class="text-xs font-semibold uppercase tracking-widest text-clay">Get a quote</span>
-            <h2 class="mt-4 font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-[1.05] text-balance">Tell us about your space.</h2>
-            <p class="mt-5 text-lg leading-[1.7] text-muted">Drop your details and a quick note on what you need. We'll arrange a free site visit and get you a fixed-price quote.</p>
-            <div class="mt-8 space-y-3 text-sm">
-              <a href="https://wa.me/6586115854" target="_blank" rel="noopener" class="flex items-center gap-3 text-ink/80 hover:text-clay transition-colors duration-200 cursor-pointer">
-                <svg class="h-5 w-5 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-                WhatsApp / Call · +65 8611 5854
-              </a>
-              <a href="mailto:hello@rkec.sg" class="flex items-center gap-3 text-ink/80 hover:text-clay transition-colors duration-200 cursor-pointer">
-                <svg class="h-5 w-5 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                hello@rkec.sg
-              </a>
-              <p class="flex items-center gap-3 text-ink/80">
-                <svg class="h-5 w-5 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                Island-wide · HDB &amp; condo homes
-              </p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7">
-            <form id="lead-form" novalidate class="rounded-3xl border border-line bg-paper p-7 sm:p-9 card-shadow">
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label for="name" class="block text-sm font-semibold text-ink">Name</label>
-                  <input id="name" name="name" type="text" autocomplete="name" required
-                    class="mt-2 w-full rounded-xl border border-line bg-cream/40 px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-clay focus:ring-2 focus:ring-clay/30"
-                    placeholder="Your name" />
-                </div>
-                <div>
-                  <label for="phone" class="block text-sm font-semibold text-ink">Phone</label>
-                  <input id="phone" name="phone" type="tel" autocomplete="tel" required
-                    class="mt-2 w-full rounded-xl border border-line bg-cream/40 px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-clay focus:ring-2 focus:ring-clay/30"
-                    placeholder="e.g. 9123 4567" />
-                </div>
-              </div>
-              <div class="mt-5">
-                <label for="message" class="block text-sm font-semibold text-ink">What do you need done?</label>
-                <textarea id="message" name="message" rows="4" required
-                  class="mt-2 w-full resize-none rounded-xl border border-line bg-cream/40 px-4 py-3 text-ink placeholder:text-muted/60 outline-none transition-all duration-200 focus:border-clay focus:ring-2 focus:ring-clay/30"
-                  placeholder="e.g. 3-room HDB: new flooring throughout, full repaint, master bathroom waterproofing."></textarea>
-              </div>
-              <p id="form-error" class="mt-3 hidden text-sm font-medium text-clay-deep" role="alert"></p>
-              <button type="submit"
-                class="mt-6 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-clay px-7 py-3.5 text-base font-semibold text-cream cta-shadow transition-all duration-200 hover:bg-clay-deep hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer">
-                Request my quote
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </button>
-
-              <div id="form-success" class="hidden mt-2 flex items-start gap-3 rounded-xl border border-clay/30 bg-clay/10 p-4">
-                <svg class="mt-0.5 h-5 w-5 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <p class="text-sm text-ink"><span class="font-semibold">Almost done!</span> WhatsApp should open with your details. Just hit send. If it didn't, message or call us at <a href="https://wa.me/6586115854" target="_blank" rel="noopener" class="font-semibold text-clay-deep underline">+65 8611 5854</a>.</p>
-              </div>
-            </form>
+    <!-- CONTACT -->
+    <section id="contact" class="rk-sec rk-contact rk-work">
+      <div class="rk-wrap rk-contact__grid">
+        <div class="reveal">
+          <p class="rk-label rk-mono">Get a quote</p>
+          <h2 class="rk-h2 mt-5 text-balance">Tell us about <em>your space.</em></h2>
+          <p class="mt-5 text-lg leading-[1.7] text-muted">A few lines on what you need is enough. We will arrange a free site visit and send a fixed-price quote.</p>
+          <div class="rk-direct">
+            <a href="https://wa.me/6586115854" target="_blank" rel="noopener"><span>+65 8611 5854</span><span class="rk-mono">WhatsApp / call</span></a>
+            <a href="mailto:hello@rkec.sg"><span>hello@rkec.sg</span><span class="rk-mono">Email</span></a>
+            <div><span>Island-wide</span><span class="rk-mono">HDB &amp; condo</span></div>
           </div>
         </div>
+
+        <form id="lead-form" novalidate class="rk-form reveal">
+          <div class="rk-form__head rk-mono"><span>Work order</span><span>Reply by WhatsApp</span></div>
+          <div class="rk-fields">
+            <div class="rk-fields rk-fields--2">
+              <div class="rk-field">
+                <label for="name" class="rk-mono"><b>01</b>Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+              </div>
+              <div class="rk-field">
+                <label for="phone" class="rk-mono"><b>02</b>Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="e.g. 9123 4567" />
+              </div>
+            </div>
+            <div class="rk-field">
+              <label for="message" class="rk-mono"><b>03</b>What do you need done?</label>
+              <textarea id="message" name="message" rows="4" required placeholder="e.g. 3-room HDB: new flooring throughout, full repaint, master bathroom waterproofing."></textarea>
+            </div>
+          </div>
+          <p id="form-error" class="mt-3 hidden text-sm font-medium text-clay-deep" role="alert"></p>
+          <button type="submit" class="rk-btn rk-btn--clay mt-7">Request my quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="rk-form__note">Opens WhatsApp with your details filled in. Nothing is stored on this site.</p>
+
+          <div id="form-success" class="hidden mt-4 flex items-start gap-3 rounded-xl border border-clay/30 bg-clay/10 p-4">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-clay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <p class="text-sm text-ink"><span class="font-semibold">Almost done!</span> WhatsApp should open with your details. Just hit send. If it didn't, message or call us at <a href="https://wa.me/6586115854" target="_blank" rel="noopener" class="font-semibold text-clay-deep underline">+65 8611 5854</a>.</p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
 
-  <!-- ░░ FOOTER ░░ -->
-  <footer class="relative z-10 border-t border-line bg-paper">
-    <div class="mx-auto max-w-content px-6 py-12">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div class="flex items-center gap-2.5">
-          <span class="grid h-9 w-9 place-items-center rounded-xl bg-ink text-cream font-display font-semibold">RK</span>
-          <span class="font-display text-lg font-semibold tracking-tight">RK E&amp;C Pte Ltd</span>
+  <!-- FOOTER -->
+  <footer class="rk-foot">
+    <div class="rk-wrap">
+      <div class="rk-foot__grid">
+        <div>
+          <a href="#top" class="rk-logo" style="color:var(--cream)">
+            <span class="rk-logo__mark" style="background:var(--cream);color:var(--ink)">RK</span>
+            <span class="rk-logo__name">RK E&amp;C Pte Ltd<small style="color:rgba(247,244,239,.55)">RENOVATION &amp; CONSTRUCTION</small></span>
+          </a>
+          <p class="mt-5" style="max-width:20rem">HDB renovation, handyman, cleaning and fixtures, by one in-house crew. Singapore, island-wide.</p>
         </div>
-        <nav class="flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-muted">
-          <a href="#services" class="hover:text-ink transition-colors duration-200 cursor-pointer">Services</a>
-          <a href="/handyman-singapore/" class="hover:text-ink transition-colors duration-200 cursor-pointer">Handyman</a>
-          <a href="#work" class="hover:text-ink transition-colors duration-200 cursor-pointer">Our Work</a>
-          <a href="#process" class="hover:text-ink transition-colors duration-200 cursor-pointer">How We Work</a>
-          <a href="#guides" class="hover:text-ink transition-colors duration-200 cursor-pointer">Guides</a>
-          <a href="#contact" class="hover:text-ink transition-colors duration-200 cursor-pointer">Contact</a>
-        </nav>
+        <div>
+          <h4 class="rk-mono">Services</h4>
+          <ul>
+            <li><a href="/handyman-singapore/">Handyman</a></li>
+            <li><a href="/painting-services-singapore/">Painting</a></li>
+            <li><a href="/move-out-cleaning-singapore/">Move-out cleaning</a></li>
+            <li><a href="/water-heater-installation-singapore/">Water heaters</a></li>
+            <li><a href="/termite-treatment-singapore/">Termite treatment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="rk-mono">Site</h4>
+          <ul>
+            <li><a href="#services">All services</a></li>
+            <li><a href="#work">Our work</a></li>
+            <li><a href="#process">How we work</a></li>
+            <li><a href="guides/">Guides</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="rk-mono">Contact</h4>
+          <ul>
+            <li><a href="https://wa.me/6586115854" target="_blank" rel="noopener">+65 8611 5854</a></li>
+            <li><a href="mailto:hello@rkec.sg">hello@rkec.sg</a></li>
+            <li>UEN 202442767D</li>
+            <li>PayNow 202442767D</li>
+          </ul>
+        </div>
       </div>
-      <div class="mt-8 grid sm:grid-cols-3 gap-4 border-t border-line pt-6 text-sm text-muted">
-        <p><span class="font-semibold text-ink">Call / WhatsApp</span><br>+65 8611 5854</p>
-        <p><span class="font-semibold text-ink">Email</span><br>hello@rkec.sg</p>
-        <p><span class="font-semibold text-ink">Company</span><br>UEN 202442767D · PayNow 202442767D</p>
+      <div class="rk-foot__word" aria-hidden="true">RK E&amp;C</div>
+      <div class="rk-foot__base">
+        <span>© <span id="year"></span> RK E&amp;C Pte Ltd. Renovation &amp; construction, Singapore.</span>
+        <span class="rk-mono">Built right. Finished clean.</span>
       </div>
-      <p class="mt-6 text-sm text-muted">© <span id="year"></span> RK E&amp;C Pte Ltd. Renovation &amp; construction, Singapore.</p>
     </div>
   </footer>
 
@@ -524,9 +662,8 @@
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal, [data-stagger]').forEach((el) => io.observe(el));
-    requestAnimationFrame(() => document.querySelectorAll('section:first-of-type .reveal, section:first-of-type [data-stagger]').forEach(el => el.classList.add('in')));
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
     const form = document.getElementById('lead-form');
     const errEl = document.getElementById('form-error');
