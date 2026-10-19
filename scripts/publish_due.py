@@ -23,6 +23,8 @@ SERVICE_PAGES = [
     "handyman-singapore",
     "water-heater-installation-singapore",
     "termite-treatment-singapore",
+    "aircon-servicing-singapore",
+    "renovation-contractor-singapore",
 ]
 
 # Service pages with a release date. Until then they keep noindex (RKEC-FLAG),
