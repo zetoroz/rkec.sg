@@ -22,7 +22,6 @@ SG = timezone(timedelta(hours=8))
 SERVICE_PAGES = [
     "handyman-singapore",
     "water-heater-installation-singapore",
-    "termite-treatment-singapore",
     "aircon-servicing-singapore",
     "renovation-contractor-singapore",
 ]
